@@ -1,0 +1,59 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  --font-sans: 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-mono: 'JetBrainsMono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace';
+  --shadow-box: 0 1px 6px 0 rgb(131 131 131 / 10%);
+  --shadow-box-dark: 0 1px 6px 0 rgb(0 0 0 / 36%);
+
+  /* 向上浮入的动画 */
+  --animate-float-in: float-in 1.5s ease-out forwards;
+
+  @keyframes float-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  prefersdark: false;
+  color-scheme: "light";
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(98% 0.003 247.858);
+  --color-base-300: oklch(96% 0.007 247.896);
+  --color-base-content: oklch(20% 0.042 265.755);
+  --color-primary: oklch(54% 0.245 262.881);
+  --color-primary-content: oklch(98% 0.003 247.858);
+  --color-secondary: oklch(62% 0.214 259.815);
+  --color-secondary-content: oklch(98% 0.003 247.858);
+  --color-accent: oklch(54% 0.245 262.881);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(27% 0.041 260.031);
+  --color-neutral-content: oklch(98% 0.003 247.858);
+  --color-info: oklch(54% 0.245 262.881);
+  --color-info-content: oklch(98% 0.003 247.858);
+  --color-success: oklch(76% 0.177 163.223);
+  --color-success-content: oklch(98% 0.003 247.858);
+  --color-warning: oklch(76% 0.188 70.08);
+  --color-warning-content: oklch(98% 0.003 247.858);
+  --color-error: oklch(64% 0.246 16.439);
+  --color-error-content: oklch(98% 0.003 247.858);
+  --radius-selector: 2rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.21875rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}

@@ -1,0 +1,16 @@
+{
+  "HomePage": {
+    "latestLogos": "Latest Logos"
+  },
+  "LogoPage": {
+    "version": "Version",
+    "style": "Style",
+    "downloadPNG": "Download PNG",
+    "downloadSVG": "Download SVG",
+    "logoNotFound": "Logo not found"
+  },
+  "LanguageSwitcher": {
+    "switchToChinese": "Switch to Chinese",
+    "switchToEnglish": "Switch to English"
+  }
+}

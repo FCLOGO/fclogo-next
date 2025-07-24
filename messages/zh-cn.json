@@ -1,0 +1,16 @@
+{
+  "HomePage": {
+    "latestLogos": "最新徽标"
+  },
+  "LogoPage": {
+    "version": "版本",
+    "style": "样式",
+    "downloadPNG": "下载 PNG",
+    "downloadSVG": "下载 SVG",
+    "logoNotFound": "徽标未找到"
+  },
+  "LanguageSwitcher": {
+    "switchToChinese": "切换到中文",
+    "switchToEnglish": "切换到英文"
+  }
+}

@@ -46,7 +46,7 @@ export default async function FooterStats({ locale }: { locale: string }) {
               {item.value}
             </div>
             <div className="text-success">
-              <item.Icon className="h-5 w-5 stroke-16 lg:h-6 lg:w-6 xl:h-8 xl:w-8 lg:stroke-20" />
+              <item.Icon className="h-6 w-6 stroke-16 mt-1.5" />
             </div>
           </div>
           <div className="text-sm text-neutral-content/60 uppercase">{item.label}</div>

@@ -1,16 +1,19 @@
 {
   "HomePage": {
+    "heroTitle": "收集 <count>{totalCount}</count> 个矢量徽标",
+    "heroSubtitle": "所有徽标包含 SVG 和 PNG 两种格式。无需账号，无限制免费下载。👋",
+    "searchTips": "支持本地化名称搜索：Liverpool，山东泰山，サンフレッチェ広島",
+    "searchPlaceholder": "搜索俱乐部、联赛、国队等...",
     "latestLogos": "最新徽标"
   },
-  "LogoPage": {
-    "version": "版本",
-    "style": "样式",
-    "downloadPNG": "下载 PNG",
-    "downloadSVG": "下载 SVG",
-    "logoNotFound": "徽标未找到"
-  },
-  "LanguageSwitcher": {
-    "switchToChinese": "切换到中文",
-    "switchToEnglish": "切换到英文"
+  "Header": {
+    "home": "首页",
+    "logos": "所有徽标",
+    "packs": "徽标集",
+    "map": "地图",
+    "contribution": "贡献",
+    "news": "新闻",
+    "links": "友情链接",
+    "submitLogo": "提交徽标"
   }
 }

@@ -1,16 +1,19 @@
 {
   "HomePage": {
+    "heroTitle": "Access <count>{totalCount}</count> vector logos",
+    "heroSubtitle": "All logos include SVG and PNG formats. No account and unlimited downloads for free.👋",
+    "searchTips": "Support localized name: Liverpool, 山东泰山, サンフレッチェ広島",
+    "searchPlaceholder": "Search clubs, leagues, national teams...",
     "latestLogos": "Latest Logos"
   },
-  "LogoPage": {
-    "version": "Version",
-    "style": "Style",
-    "downloadPNG": "Download PNG",
-    "downloadSVG": "Download SVG",
-    "logoNotFound": "Logo not found"
-  },
-  "LanguageSwitcher": {
-    "switchToChinese": "Switch to Chinese",
-    "switchToEnglish": "Switch to English"
+  "Header": {
+    "home": "Home",
+    "logos": "Logos",
+    "packs": "Packs",
+    "map": "Map",
+    "contribution": "Contribution",
+    "news": "News",
+    "links": "Links",
+    "submitLogo": "Submit Logo"
   }
 }

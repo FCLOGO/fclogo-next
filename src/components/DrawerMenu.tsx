@@ -1,4 +1,4 @@
-import React from 'react';
+'use client'; 
 import NavLink from './NavLink'
 import { menuConfig } from '@/i18n/menuConfig';
 import { useTranslations } from 'next-intl';

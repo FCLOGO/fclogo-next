@@ -4,6 +4,8 @@
     "heroSubtitle": "All logos include SVG and PNG formats. No account and unlimited downloads for free.👋",
     "searchTips": "Support localized name: Liverpool, 山东泰山, サンフレッチェ広島",
     "searchPlaceholder": "Search clubs, leagues, national teams...",
+    "backToTop": "Back to Top",
+    "scrollToBottom": "Scroll to Bottom",
     "latestLogos": "Latest Logos"
   },
   "Header": {
@@ -15,5 +17,16 @@
     "news": "News",
     "links": "Links",
     "submitLogo": "Submit Logo"
+  },
+  "Footer": {
+    "backToHome": "Back to Home",
+    "license": "The copyrights of logos appearing on this site belong to their legal holders and for personal use only, non-commercial use.",
+    "about": "About Us",
+    "termsOfUse": "Terms of Use",
+    "links": "Links",
+    "logos": "Logos",
+    "clubs": "Clubs",
+    "competitions": "Competitions",
+    "nations": "Nations/Regions"
   }
 }

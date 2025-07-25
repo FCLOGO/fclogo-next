@@ -5,5 +5,5 @@ export const menuConfig = [
   { href: '/map', translationKey: 'map' },
   { href: '/contribution', translationKey: 'contribution' },
   { href: '/news', translationKey: 'news' },
-  { href: '/links', translationKey: 'links' },
+  // { href: '/links', translationKey: 'links' },
 ];

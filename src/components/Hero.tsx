@@ -33,7 +33,7 @@ export default async function Hero() {
               )
               })}
           </h2>
-          <p className="lg:text-base text-sm my-4">{t(`heroSubtitle`)}</p>
+          <p className="lg:text-base text-sm my-4 font-medium">{t(`heroSubtitle`)}</p>
           <section className="relative flex-auto z-20">
             <input
               type="text"
@@ -42,7 +42,7 @@ export default async function Hero() {
             />
             <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 text-neutral z-30" />
           </section>
-          <p className="my-4 lg:text-base text-sm">{t(`searchTips`)}</p>
+          <p className="my-4 lg:text-base text-sm font-medium">{t(`searchTips`)}</p>
         </div>
       </div>
     </div>

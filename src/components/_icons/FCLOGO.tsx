@@ -1,10 +1,10 @@
 import React from 'react';
 
-interface LogoProps {
+interface IconProps {
   className?: string;
 }
 
-export default function Logo({ className }: LogoProps) {
+export default function FCLOGOIcon({ className }: IconProps) {
   return (
     <svg
       viewBox="0 0 400 76"

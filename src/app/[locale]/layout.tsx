@@ -5,8 +5,9 @@ import { getMessages } from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import Header from '@/components/Header';
+import Footer from "@/components/Footer";
 import DrawerMenu from "@/components/DrawerMenu";
-import LanguageSwitcher  from '@/components/LanguageSwitcher';
+import FloatingActionGroup from "@/components/FloatingActionGroup";
 
 export const metadata: Metadata = {
   title: "FCLOGO",
@@ -36,7 +37,8 @@ export default async function LocaleLayout({
               <main className="flex-grow">
                 {children}
               </main>
-              <LanguageSwitcher />
+              <Footer />
+              <FloatingActionGroup />
             </div>
             <DrawerMenu />
           </div>

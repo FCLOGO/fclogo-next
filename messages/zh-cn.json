@@ -6,7 +6,9 @@
     "searchPlaceholder": "搜索俱乐部、联赛、国队等...",
     "backToTop": "回到顶部",
     "scrollToBottom": "转到底部",
-    "latestLogos": "最新徽标"
+    "latestLogos": "最新徽标",
+    "noData": "暂无数据",
+    "viewAllLogos": "所有徽标"
   },
   "Header": {
     "home": "首页",
@@ -26,7 +28,7 @@
     "links": "友情链接",
     "logos": "徽标",
     "clubs": "俱乐部",
-    "competitions": "比赛",
+    "competitions": "赛事",
     "nations": "国家/地区"
   }
 }

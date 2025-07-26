@@ -34,9 +34,7 @@ export default async function LocaleLayout({
             <input id="main-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col bg-base-300 min-h-screen">
               <Header />
-              <main className="flex-grow">
-                {children}
-              </main>
+              {children}
               <Footer />
               <FloatingActionGroup />
             </div>

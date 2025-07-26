@@ -22,7 +22,7 @@ export default async function Hero() {
   return (
     <div className="hero min-h-[360px] bg-gradient-to-b from-primary to-secondary text-primary-content">
       <div className="text-center w-full">
-        <div className="max-w-4xl mx-auto px-10 lg:px-24">
+        <div className="max-w-5xl mx-auto px-10 lg:px-24">
           <h2 className="text-3xl uppercase font-semibold">
             {t.rich(`heroTitle`, {
               totalCount: formattedCount,

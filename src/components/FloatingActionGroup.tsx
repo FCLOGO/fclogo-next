@@ -19,7 +19,7 @@ export default function FloatingActionGroup() {
     window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
   };
   return (
-    <div className="fixed bottom-80 right-6 z-90 hidden lg:block">
+    <div className="fixed bottom-20 right-6 z-90 hidden lg:block">
       <div className="flex flex-col items-center rounded-md">
         <LanguageSwitcher 
           className={clsx({

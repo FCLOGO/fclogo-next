@@ -46,7 +46,7 @@ export default function Header() {
           </ul>
         </div>
         <div className="navbar-end">
-          <button className="shadow-none border-none outline-none btn btn-success rounded inline-flex uppercase transition-colors hover:bg-warning">
+          <button className="shadow-none border-none outline-none btn btn-success rounded-full inline-flex uppercase transition-colors hover:bg-warning">
             <Upload className="mr-1 w-4 h-4" />
             {t('submitLogo')}
           </button>

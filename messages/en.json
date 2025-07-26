@@ -6,7 +6,9 @@
     "searchPlaceholder": "Search clubs, leagues, national teams...",
     "backToTop": "Back to Top",
     "scrollToBottom": "Scroll to Bottom",
-    "latestLogos": "Latest Logos"
+    "latestLogos": "Latest Logos",
+    "noData": "No data available",
+    "viewAllLogos": "All Logos"
   },
   "Header": {
     "home": "Home",

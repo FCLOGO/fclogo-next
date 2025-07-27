@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { JetBrains_Mono} from "next/font/google";
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import {notFound} from 'next/navigation';
@@ -8,6 +9,11 @@ import Header from '@/components/Header';
 import Footer from "@/components/Footer";
 import DrawerMenu from "@/components/DrawerMenu";
 import FloatingActionGroup from "@/components/FloatingActionGroup";
+
+const jetBrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "FCLOGO",
@@ -28,7 +34,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
   return (
     <html lang={locale} data-theme="light">
-      <body className="antialiased">
+      <body className={`${jetBrainsMono.variable} antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <div className="drawer">
             <input id="main-drawer" type="checkbox" className="drawer-toggle" />

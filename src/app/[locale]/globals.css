@@ -1,9 +1,9 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-@theme {
+@theme inline {
   --font-sans: 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --font-mono: 'JetBrainsMono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace';
+  --font-mono: var(--font-jetbrains-mono), 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace';
   --shadow-box: 0 1px 6px 0 rgb(131 131 131 / 10%);
 
   /* 向上浮入的动画 */

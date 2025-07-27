@@ -34,7 +34,7 @@ export default function LogoCard({ logo, locale }: LogoCardProps) {
 
   return (
     <Link href={`${logo.slug.current}`} className="card bg-base-100 shadow-box group overflow-hidden border border-base-200 hover:border-gray-300">
-      <figure className="relative aspect-square p-16">
+      <figure className={`relative aspect-square p-16 ${logo.isBgDark ? 'bg-gray-800' : 'bg-base-100'}`}>
         <Image
           src={getOptimizedImage(logo.previewImage, 300)}
           alt={subjectName}
@@ -59,11 +59,11 @@ export default function LogoCard({ logo, locale }: LogoCardProps) {
       <div className="card-body bg-base-100 h-16 w-full flex flex-row flex-nowrap justify-between items-center content-center border-t border-base-300 border-dashed">
         <h2 className="card-title flex-auto justify-center text-base line-clamp-1">{subjectShortName}</h2>
         {logo.version === 0 ? '' : (
-          <span className="badge badge-sm badge-success font-mono flex-none">
+          <span className="badge badge-sm badge-success font-mono flex-none font-semibold">
             {String(logo.version).replace('.', '-')}
           </span>
         )}
-        <span className='badge badge-sm badge-success font-mono uppercase flex-none'>{styleName}</span>
+        <span className='badge badge-sm badge-success font-mono uppercase flex-none font-semibold'>{styleName}</span>
       </div>
     </Link>
   );

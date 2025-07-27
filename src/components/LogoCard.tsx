@@ -57,13 +57,13 @@ export default function LogoCard({ logo, locale }: LogoCardProps) {
         )}
       </figure>
       <div className="card-body bg-base-100 h-16 w-full flex flex-row flex-nowrap justify-between items-center content-center border-t border-base-300 border-dashed">
-        <h2 className="card-title flex-auto justify-center text-base line-clamp-2 whitespace-nowrap overflow-hidden text-ellipsis">{subjectShortName}</h2>
+        <h2 className="card-title flex-auto justify-center text-base line-clamp-1">{subjectShortName}</h2>
         {logo.version === 0 ? '' : (
-          <span className="badge badge-sm badge-primary badge-outline font-mono">
+          <span className="badge badge-sm badge-success font-mono flex-none">
             {String(logo.version).replace('.', '-')}
           </span>
         )}
-        <span className='badge badge-sm badge-success badge-outline font-mono uppercase'>{styleName}</span>
+        <span className='badge badge-sm badge-success font-mono uppercase flex-none'>{styleName}</span>
       </div>
     </Link>
   );

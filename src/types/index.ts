@@ -30,3 +30,75 @@ export type LogoCardQueryResult = {
     title: InternationalizedString;
   };
 };
+
+/**
+ * 徽标的详细信息和预览图像
+ */
+
+type LogoFragment = {
+  _id: string;
+  slug: { current: string };
+  version: number;
+  isOutdated?: boolean;
+  isDoubtful?: boolean;
+  isBgDark?: boolean;
+  previewImage: Image;
+  style: {
+    title: InternationalizedString;
+  };
+};
+
+export type FullLogoQueryResult = {
+  _id: string;
+  version: number;
+  isOutdated?: boolean;
+  isDoubtful?: boolean;
+  isBgDark?: boolean;
+  previewImage: Image;
+  pngUrl: string;
+  svgUrl: string;
+  referenceInfo?: string;
+  alternateNames?: string[];
+  slug: { current: string };
+  subject: {
+    name: InternationalizedString;
+    status: string;
+    info: {
+      shortName: InternationalizedString;
+      localName?: string;
+      founded?: number;
+      city?: InternationalizedString;
+      ground?: InternationalizedString;
+      duration?: string;
+      association?: string;
+      confederation?: string;
+      level?: InternationalizedString;
+      promotion?: InternationalizedString;
+      relegation?: InternationalizedString;
+      teams?: number;
+      affiliations?: string;
+      headquarter?: InternationalizedString;
+    };
+    socialLinks: {
+      twitterURL?: string;
+      websiteURL?: string;
+      weiboURL?: string;
+      wikiURL?: string;
+    };
+    nation?: {
+      name: InternationalizedString;
+      flagRectangle: Image;
+    };
+  };
+  style: {
+    title: InternationalizedString;
+  };
+  contributor?: {
+    name: string;
+    profileUrl: string;
+  };
+  // 同版本的所有其他样式
+  otherStyles: LogoFragment[];
+  // 该主体的完整徽标历史
+  logoHistory: LogoFragment[];
+};

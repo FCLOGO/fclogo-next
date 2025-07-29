@@ -1,11 +1,11 @@
-import { getTranslations } from 'next-intl/server'
+// import { getTranslations } from 'next-intl/server'
 import Hero from '@/components/Hero';
 import LatestLogos from '@/components/LatestLogos'
 
 export const revalidate = 3600
 
 export default async function HomePage() {
-  const t = await getTranslations('HomePage');
+  // const t = await getTranslations('HomePage');
   return (
     <>
       <Hero />

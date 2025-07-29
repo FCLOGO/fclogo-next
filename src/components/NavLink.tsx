@@ -1,16 +1,29 @@
 'use client';
 import { Link, usePathname } from '@/i18n/navigation';
 import type { ComponentProps } from 'react';
+import clsx from 'clsx';
 
 type NavLinkProps = ComponentProps<typeof Link> & {
   activeClassName?: string;
+  exact?: boolean;
 };
 
-export default function NavLink({ href, activeClassName, className, ...rest }: NavLinkProps) {
+export default function NavLink({ 
+  href, 
+  activeClassName, 
+  className, 
+  exact = false, 
+  ...rest 
+}: NavLinkProps) {
   const pathname = usePathname();
-  // 判断当前路径是否以链接的 href 开头
-  // 对于 href="/", 需要完全匹配
-  const isActive = href === '/' ? pathname === href : pathname.startsWith(href as string);
-  const combinedClassName = `${className} ${isActive ? activeClassName : ''}`;
+
+  const isActive = exact
+    ? pathname === href // 精确匹配
+    : (href === '/' ? pathname === href : pathname.startsWith(href as string)); // 旧的、层级式匹配
+
+  const combinedClassName = clsx(className, {
+    [activeClassName || '']: isActive, // 只有当 isActive 为 true 时才添加 activeClassName
+  });
+
   return <Link href={href} className={combinedClassName} {...rest} />;
 }

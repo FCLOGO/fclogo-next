@@ -6,7 +6,7 @@ import type { LogoCardQueryResult } from '@/types';
 import { ArrowUpRight } from 'lucide-react';
 
 async function getLatestLogos(): Promise<LogoCardQueryResult[]> {
-  const query = `*[_type == "logo"] | order(dateOriginal desc) [0...12] {
+  const query = `*[_type == "logo"] | order(dateOriginal desc) [0...24] {
     slug,
     version,
     isBgDark,
@@ -44,10 +44,10 @@ export default async function LatestLogos() {
         <h2 className="font-bold flex-auto">
           {t('latestLogos')}
         </h2>
-        <button className="btn btn-success rounded-full uppercase">
+        <button className="btn btn-success rounded-full uppercase pl-4 pr-2.5">
           <Link href="/logos" className='flex flex-row items-center gap-1'>
             {t('viewAllLogos')}
-            <ArrowUpRight className="h-4 w-4" />
+            <ArrowUpRight className="h-5 w-5" />
           </Link>
         </button>
       </div>

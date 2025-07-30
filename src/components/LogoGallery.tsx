@@ -29,7 +29,7 @@ export default async function LogoGallery({ logo, locale }: Props) {
         />
       </figure>
       {/* 其他徽标样式 */}
-      {logo.otherStyles && logo.otherStyles.length > 0 && (
+      {logo.otherStyles && logo.otherStyles.length > 1 && (
         <div className='w-full h-20 my-10'>
           <ul className='flex flex-row items-start justify-center gap-6'>
             {logo.otherStyles.map((styleLogo) =>(

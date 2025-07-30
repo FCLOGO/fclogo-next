@@ -17,7 +17,7 @@ export default function DownloadCounter({ count }: DownloadCounterProps) {
           {t.rich('downloadCount', {
             count: count,
             data: (chunks) => (
-              <data className="font-mono mr-xs text-sm">{chunks}</data>
+              <data className="font-mono mr-xs">{chunks}</data>
             ),
           })}
         </span>

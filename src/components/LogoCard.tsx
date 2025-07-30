@@ -34,13 +34,13 @@ export default function LogoCard({ logo, locale }: LogoCardProps) {
   const styleName = localize(logo.style.title, locale);
 
   return (
-    <Link href={`${logo.slug.current}`} className="card bg-base-100 shadow-box group overflow-hidden border border-base-200 hover:border-gray-300">
-      <figure className={`relative aspect-square p-16 ${logo.isBgDark ? 'bg-neutral' : 'bg-base-100'}`}>
+    <Link href={logo.slug.current} className="card bg-base-100 shadow-box group overflow-hidden border border-base-200 hover:border-gray-300">
+      <figure className={`relative aspect-square p-[20%] ${logo.isBgDark ? 'bg-neutral' : 'bg-base-100'}`}>
         <SuspenseImage
-          src={getOptimizedImage(logo.previewImage, 300)}
+          src={getOptimizedImage(logo.previewImage, 200)}
           alt={subjectName}
-          width={300}
-          height={300}
+          width={200}
+          height={200}
           className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
         />
         {logo.subject.nation?.flagSquare && (
@@ -55,14 +55,14 @@ export default function LogoCard({ logo, locale }: LogoCardProps) {
           </div>
         )}
       </figure>
-      <div className="card-body bg-base-100 h-16 w-full flex flex-row flex-nowrap justify-between items-center content-center border-t border-gray-300 border-dashed">
-        <h2 className="card-title flex-auto justify-center text-base line-clamp-1">{subjectShortName}</h2>
+      <div className="card-body gap-1 bg-base-100 h-16 w-full flex flex-row flex-nowrap justify-between items-center content-center border-t border-gray-300 border-dashed">
+        <h2 className="card-title flex-auto justify-center text-sm line-clamp-1">{subjectShortName}</h2>
         {logo.version === 0 ? '' : (
-          <span className="badge badge-sm badge-success font-mono flex-none font-semibold">
+          <span className="badge badge-sm badge-success font-mono flex-none font-semibold px-1.5">
             {String(logo.version)}
           </span>
         )}
-        <span className='badge badge-sm badge-success font-mono uppercase flex-none font-semibold'>{styleName}</span>
+        <span className='badge badge-sm badge-success font-mono uppercase flex-none font-semibold px-1.5'>{styleName}</span>
       </div>
     </Link>
   );

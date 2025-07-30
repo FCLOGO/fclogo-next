@@ -15,6 +15,7 @@ export async function getLogoBySlug(slug: string): Promise<FullLogoQueryResult |
     alternateNames,
     slug,
     subject->{
+      _type,
       name,
       status,
       info {

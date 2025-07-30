@@ -6,6 +6,7 @@ import { getOptimizedImage } from '@/lib/sanity.image';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
+import DownloadCounter from './DownloadCounter';
 import XIcon from './_icons/X';
 import WeiboIcon from './_icons/Weibo';
 import WikiIcon from './_icons/Wiki';
@@ -117,10 +118,15 @@ export default async function LogoDetailPage({ logo, locale }: Props) {
             </Link>
           </p>
         </section>
+        <section className='flex flex-col gap-2 mt-2'>
+          <DownloadCounter count={1156} />
+        </section>
       </div>
       {/* 详细信息 */}
       <div className='flex flex-col gap-2 mt-2 px-6 pt-6 border-t border-t-base-300'>
-        <h3 className="font-semibold text-sm">{t('infoTitle')}</h3>
+        <h3 className="font-semibold text-sm">
+          {`${t(logo.subject._type)}${t('infoTitle')}`}
+        </h3>
         <table className="text-xs">
           <tbody>
             {details.map(item => item.value ? (

@@ -61,6 +61,7 @@ export type FullLogoQueryResult = {
   alternateNames?: string[];
   slug: { current: string };
   subject: {
+    _type: 'club' | 'comp' | 'team' | 'assn' | 'conf';
     name: InternationalizedString;
     status: string;
     info: {

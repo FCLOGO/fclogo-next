@@ -31,7 +31,7 @@ export default async function Footer() {
     <footer className="flex flex-col text-neutral-content bg-neutral">
       <div className="container mx-auto px-6 pt-10 pb-6">
         <div className="flex flex-col items-center gap-6 lg:items-start">
-          <Link href="/" aria-label={t('backToHome')}>
+          <Link href="/" aria-label={t('backToHome')} className='mb-4'>
             <Logo className="h-5 w-auto fill-current [&_.path-2]:fill-success" />
           </Link>
 

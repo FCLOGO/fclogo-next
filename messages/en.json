@@ -69,5 +69,12 @@
     "foundErr": "Found an Error?",
     "tellMe": "Tell Me",
     "logoTimeline": "Logo Timeline"
+  },
+  "LogosPage": {
+    "pageTitle": "All Logos",
+    "loading": "Loading...",
+    "loadMore": "Load More",
+    "allLoaded": "You've reached the end!",
+    "noData": "No logos found."
   }
 }

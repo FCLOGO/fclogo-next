@@ -69,5 +69,12 @@
     "foundErr": "有错误？",
     "tellMe": "告诉我们",
     "logoTimeline": "徽标时间线"
+  },
+  "LogosPage": {
+    "pageTitle": "所有徽标",
+    "loading": "加载中...",
+    "loadMore": "加载更多",
+    "allLoaded": "已全部加载完毕！",
+    "noData": "暂无徽标数据。"
   }
 }

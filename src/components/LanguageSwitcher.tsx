@@ -17,7 +17,7 @@ export default function LanguageSwitcher( { className }: { className?: string })
   function onSwitchLanguage() {
     const nextLocale = locale === 'en' ? 'zh-cn' : 'en';
     startTransition(() => {
-      router.replace(pathname, {locale: nextLocale});
+      router.replace(pathname, {locale: nextLocale, scroll: false});
     });
   }
 
@@ -31,7 +31,11 @@ export default function LanguageSwitcher( { className }: { className?: string })
         className,
         )}
       >
-        {locale === 'en' ? <ZhIcon /> : <EnIcon />}
+        {isPending ? (
+          <span className="loading loading-spinner loading-sm"></span>
+        ) : (
+          locale === 'en' ? <ZhIcon /> : <EnIcon />
+        )}
       </button>
     </div>
   );

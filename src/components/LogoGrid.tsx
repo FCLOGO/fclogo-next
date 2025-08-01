@@ -79,7 +79,15 @@ export default function LogoGrid({ initialLogos, locale }: LogoGridProps) {
           <>
             {page > PAGINATION_THRESHOLD ? (
               // 显示 "加载更多" 按钮
-              <button onClick={() => loadMoreLogos()} disabled={isPending} className="btn btn-primary rounded">
+              <button 
+                onClick={() => {
+                  startTransition(() => {
+                    loadMoreLogos();
+                  });
+                }}
+                disabled={isPending}
+                className="btn btn-primary rounded"
+              >
                 <Loader className='w-4 h-4' />
                 {isPending ? t('loading') : t('loadMore')}
               </button>

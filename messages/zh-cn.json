@@ -73,7 +73,8 @@
     "preparingDownload": "准备下载中...",
     "downloadDone": "下载完成 🎉",
     "downloadTips": "如果下载没有开始，",
-    "clickHere": "点击这里"
+    "clickHere": "点击这里",
+    "autoDownloadTips": "下载将自动开始"
   },
   "LogosPage": {
     "pageTitle": "所有徽标",

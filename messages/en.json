@@ -73,7 +73,8 @@
     "preparingDownload": "Preparing Download...",
     "downloadDone": "Download Completed 🎉",
     "downloadTips": "If your download doesn't start, ",
-    "clickHere": "Click Here"
+    "clickHere": "Click Here",
+    "autoDownloadTips": "The download will start automatically"
   },
   "LogosPage": {
     "pageTitle": "All Logos",

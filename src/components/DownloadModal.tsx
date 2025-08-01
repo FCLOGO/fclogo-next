@@ -70,12 +70,18 @@ export default function DownloadModal({ modalRef, isDownloading, isCompleted, co
               {modalState.content}
             </div>
           </div>
-          <p className="text-sm text-center">
-            {t('downloadTips')}
-            <button onClick={() => onTriggerDownload(downloadUrl)} className="font-bold link link-primary underline-offset-4 ml-1">
-              {t('clickHere')}
-            </button>
-          </p>
+          {(isCompleted || isDownloading) ? (
+            <p className="text-sm text-center">
+              {t('downloadTips')}
+              <button onClick={() => onTriggerDownload(downloadUrl)} className="font-bold link link-primary underline-offset-4">
+                {t('clickHere')}
+              </button>
+            </p>
+          ) : (
+            <p className="text-sm text-center">
+              {t('autoDownloadTips')}
+            </p>
+          )}
           <a href="https://www.buymeacoffee.com/fclogo" target="_blank">
             <Image
               src="/buy-me-a-coffee.png" 

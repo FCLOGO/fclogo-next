@@ -5,6 +5,7 @@ import clsx from 'clsx';
 // import Image from 'next/image';
 import SuspenseImage from './SuspenseImage';
 import { Link } from '@/i18n/navigation';
+import { BadgeCheck } from 'lucide-react';
 
 type Props = {
   history: FullLogoQueryResult['logoHistory'];
@@ -14,9 +15,13 @@ type Props = {
 
 export default async function LogoTimeline({ history, currentLogoVersion }: Props) {
   const t = await getTranslations('LogoDetailPage');
+  const isTimelineComplete = history.length > 0 && history[0].subject?.timelineComplete;
   return (
     <section className="border-t border-t-gray-300/50 flex flex-col px-6 py-10 bg-base-200">
-      <h3 className="uppercase font-semibold mb-6">{t('logoTimeline')}</h3>
+      <h3 className="uppercase font-semibold mb-6 flex flex-row items-center gap-2">
+        {t('logoTimeline')}
+        {isTimelineComplete && <BadgeCheck className='h-5 w-5 text-success'/>}
+      </h3>
       <div className="w-full flex-auto grid justify-between grid-cols-[repeat(auto-fill,_minmax(120px,_1fr))] gap-6">
         {history.map(logo => (
           // 给当前徽标添加一个特殊样式

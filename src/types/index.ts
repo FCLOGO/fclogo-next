@@ -46,6 +46,9 @@ type LogoFragment = {
   style: {
     title: InternationalizedString;
   };
+  subject?: {
+    timelineComplete?: boolean;
+  }
 };
 
 export type FullLogoQueryResult = {

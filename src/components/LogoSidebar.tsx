@@ -48,7 +48,7 @@ export default function LogoDetailPage({ logo, locale }: Props) {
   // 处理下载点击事件
   const handleDownloadClick = (url: string) => {
     setDownloadUrl(url);
-    setCountdown(10); // 重置倒计时
+    setCountdown(5); // 重置倒计时
     setIsDownloading(false); // 重置下载状态
     setIsCompleted(false); // 重置完成状态
     modalRef.current?.showModal(); // 打开 daisyUI 模态框
@@ -84,7 +84,7 @@ export default function LogoDetailPage({ logo, locale }: Props) {
   // 手动关闭模态框并重置状态
   const handleCloseModal = () => {
     if (timerRef.current) clearTimeout(timerRef.current); // 确保关闭时停止计时器
-    setCountdown(10); // 重置倒计时
+    setCountdown(5); // 重置倒计时
     setDownloadUrl(''); // 清空下载链接
     setIsDownloading(false); // 重置下载状态
     setIsCompleted(false); // 重置完成状态

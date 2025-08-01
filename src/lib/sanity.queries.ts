@@ -69,6 +69,9 @@ export async function getLogoBySlug(slug: string): Promise<FullLogoQueryResult |
       version,
       isDoubtful,
       previewImage,
+      subject->{
+        timelineComplete
+      }
     }
   }`;
   

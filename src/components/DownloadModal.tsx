@@ -64,7 +64,7 @@ export default function DownloadModal({ modalRef, isDownloading, isCompleted, co
             ></div>
             <div 
               className="radial-progress text-primary absolute"
-              style={{ "--value": (10 - countdown) * 10, "--size": "8rem" } as React.CSSProperties}
+              style={{ "--value": (5 - countdown) * 20, "--size": "8rem" } as React.CSSProperties}
               role="progressbar"
             >
               {modalState.content}

@@ -68,7 +68,12 @@
     "contributor": "贡献者:",
     "foundErr": "有错误？",
     "tellMe": "告诉我们",
-    "logoTimeline": "徽标时间线"
+    "logoTimeline": "徽标时间线",
+    "startDownload": "下载即将开始...",
+    "preparingDownload": "准备下载中...",
+    "downloadDone": "下载完成 🎉",
+    "downloadTips": "如果下载没有开始，",
+    "clickHere": "点击这里"
   },
   "LogosPage": {
     "pageTitle": "所有徽标",

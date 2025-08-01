@@ -68,7 +68,12 @@
     "contributor": "Contributor:",
     "foundErr": "Found an Error?",
     "tellMe": "Tell Me",
-    "logoTimeline": "Logo Timeline"
+    "logoTimeline": "Logo Timeline",
+    "startDownload": "Download will start soon...",
+    "preparingDownload": "Preparing Download...",
+    "downloadDone": "Download Completed 🎉",
+    "downloadTips": "If your download doesn't start, ",
+    "clickHere": "Click Here"
   },
   "LogosPage": {
     "pageTitle": "All Logos",

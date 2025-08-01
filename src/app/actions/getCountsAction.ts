@@ -1,6 +1,6 @@
 'use server';
 
-const COUNTER_WORKER_URL = process.env.COUNTER_WORKER_URL;
+const COUNTER_WORKER_URL = process.env.NEXT_COUNTER_WORKER_URL;
 
 // 这个函数将用于批量获取多个 logo 的计数值
 export async function getCountsAction(logoIDs: string[]): Promise<Record<string, number>> {

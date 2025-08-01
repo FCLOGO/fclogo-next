@@ -17,15 +17,13 @@ export const revalidate = 3600 * 24; // 页面每天重新生成一次
 export default async function LogoDetailPage({ params }: Props) {
   const { locale, slug } = await params;
   const fullSlug = `/${slug.join('/')}`;
-  // const logo = await getLogoBySlug(fullSlug);
-  const [logo, initialDownloadCount] = await Promise.all([
-    getLogoBySlug(fullSlug),
-    getCountAction(fullSlug) // ★★★ 使用 Action 获取初始计数
-  ]);
+  const logo = await getLogoBySlug(fullSlug);
 
   if (!logo) {
     notFound(); // 如果找不到徽标，显示 404 页面
   }
+
+  const initialDownloadCount = await getCountAction(logo._id);
 
   return (
     <main className="w-full h-auto mx-auto flex-grow flex flex-col">

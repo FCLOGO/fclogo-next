@@ -10,9 +10,11 @@ type Props = {
   logo: FullLogoQueryResult;
   locale: string;
   onDownloadClick: (url: string) => void;
+  downloadCount: number;
+  isCountUpdating: boolean;
 };
 
-export default function SidebarDownload({ logo, locale, onDownloadClick }: Props) {
+export default function SidebarDownload({ logo, locale, onDownloadClick, downloadCount, isCountUpdating }: Props) {
   const t = useTranslations('LogoDetailPage');
   const subjectName = localize(logo.subject.name, locale);
   return (
@@ -54,7 +56,7 @@ export default function SidebarDownload({ logo, locale, onDownloadClick }: Props
           </p>
         </section>
         <section className='flex flex-col gap-2 mt-2'>
-          <DownloadCounter count={1156} />
+          <DownloadCounter count={downloadCount} isUpdating={isCountUpdating} />
         </section>
       </div>
     </>

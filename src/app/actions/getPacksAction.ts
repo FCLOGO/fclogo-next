@@ -3,7 +3,7 @@
 import { client } from '@/lib/sanity.client';
 import type { LatestPackQueryResult } from '@/types';
 
-const PAGE_SIZE = 10; // 每次加载的数量
+const PAGE_SIZE = 20; // 每次加载的数量
 
 export async function getPacksAction(page: number): Promise<LatestPackQueryResult[]> {
   const start = page * PAGE_SIZE;

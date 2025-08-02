@@ -18,7 +18,7 @@ export default function PackGrid({ initialPacks, locale }: PackGridProps) {
   const t = useTranslations('LogosPage');
   const [packs, setPacks] = useState(initialPacks);
   const [page, setPage] = useState(1); // 我们已经加载了第0页，所以下一页是1
-  const [hasMore, setHasMore] = useState(initialPacks.length === 10);
+  const [hasMore, setHasMore] = useState(initialPacks.length === 20);
   const [isPending, startTransition] = useTransition();
 
   const loadMoreRef = useRef<HTMLDivElement>(null);
@@ -34,7 +34,7 @@ export default function PackGrid({ initialPacks, locale }: PackGridProps) {
       setPacks(prev => [...prev, ...newPacks]);
     }
     
-    if (newPacks.length < 10) {
+    if (newPacks.length < 20) {
       setHasMore(false);
     }
   }, [page, hasMore, isPending]);

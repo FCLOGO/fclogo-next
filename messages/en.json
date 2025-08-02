@@ -85,5 +85,11 @@
     "loadMore": "Load More",
     "allLoaded": "You've reached the end!",
     "noData": "No logos found."
+  },
+  "MapPage": {
+    "clubStatistics": "Club Statistics",
+    "totalCount": "Total",
+    "mapInfo_1": "Active",
+    "mapInfo_2": "Inactive"
   }
 }

@@ -85,5 +85,11 @@
     "loadMore": "加载更多",
     "allLoaded": "已全部加载完毕！",
     "noData": "暂无徽标数据。"
+  },
+  "MapPage": {
+    "clubStatistics": "俱乐部统计",
+    "totalCount": "合计",
+    "mapInfo_1": "运营中",
+    "mapInfo_2": "停止运营"
   }
 }

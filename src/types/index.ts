@@ -157,3 +157,43 @@ export type FullPackQueryResult = {
   };
   items: LogoCardQueryResult[];
 };
+
+// 地图页面的 GROQ 查询结果类型
+export type MapQueryResult = {
+  _id: string;
+  status: 'active' | 'inactive';
+  name: InternationalizedString;
+  location: {
+    lng: number;
+    lat: number;
+  };
+  logo?: { // logo 是可选的
+    previewImage: Image;
+  };
+  nation?: { // nation 也是可选的
+    name: InternationalizedString;
+    code: string;
+    center: {
+      lng: number;
+      lat: number;
+    };
+    zoom: number;
+    flagRectangle: Image;
+  };
+};
+
+// 传递给 MapContainer 的国家统计数据类型
+export type CountryStat = {
+  code: string;
+  name: InternationalizedString;
+  flag?: Image; // flag 是可选的
+  center: [number, number];
+  zoom: number;
+  count: number;
+};
+
+// 为传递给 MapContainer 的俱乐部查找表类型
+export type ClubDataMap = Record<string, {
+  name: InternationalizedString;
+  logoImage?: Image; // logoImage 是可选的
+}>;

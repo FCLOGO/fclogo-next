@@ -1,40 +1,40 @@
 'use client';
 
 import { useState, useEffect, useRef, useTransition, useCallback } from 'react';
-import type { LogoCardQueryResult } from '@/types';
-import { getLogosAction } from '@/app/actions/getLogosAction';
-import LogoCard from './LogoCard';
+import type { LatestPackQueryResult } from '@/types';
+import { getPacksAction } from '@/app/actions/getPacksAction';
+import PackCard from './PackCard';
 import { useTranslations } from 'next-intl';
 import { Loader } from 'lucide-react';
 
-const PAGINATION_THRESHOLD = 5; // 自动加载 5 次
+const PAGINATION_THRESHOLD = 4; // 自动加载 5 次
 
-interface LogoGridProps {
-  initialLogos: LogoCardQueryResult[];
+interface PackGridProps {
+  initialPacks: LatestPackQueryResult[];
   locale: string;
 }
 
-export default function LogoGrid({ initialLogos, locale }: LogoGridProps) {
+export default function PackGrid({ initialPacks, locale }: PackGridProps) {
   const t = useTranslations('LogosPage');
-  const [logos, setLogos] = useState(initialLogos);
+  const [packs, setPacks] = useState(initialPacks);
   const [page, setPage] = useState(1); // 我们已经加载了第0页，所以下一页是1
-  const [hasMore, setHasMore] = useState(initialLogos.length === 20);
+  const [hasMore, setHasMore] = useState(initialPacks.length === 10);
   const [isPending, startTransition] = useTransition();
 
   const loadMoreRef = useRef<HTMLDivElement>(null);
 
-  const loadMoreLogos = useCallback(async () => {
+  const loadMorePacks = useCallback(async () => {
     // 使用 isPending 代替 isLoading
     if (isPending || !hasMore) return;
 
-    const newLogos = await getLogosAction(page);
+    const newPacks = await getPacksAction(page);
     
-    if (newLogos.length > 0) {
+    if (newPacks.length > 0) {
       setPage(prev => prev + 1);
-      setLogos(prev => [...prev, ...newLogos]);
+      setPacks(prev => [...prev, ...newPacks]);
     }
     
-    if (newLogos.length < 20) {
+    if (newPacks.length < 10) {
       setHasMore(false);
     }
   }, [page, hasMore, isPending]);
@@ -46,7 +46,7 @@ export default function LogoGrid({ initialLogos, locale }: LogoGridProps) {
         // 当 ref 元素进入视口，并且我们处于自动加载阶段时
         if (entries[0].isIntersecting && hasMore && !isPending && page <= PAGINATION_THRESHOLD) {
           startTransition(() => {
-            loadMoreLogos();
+            loadMorePacks();
           });
         }
       },
@@ -63,13 +63,13 @@ export default function LogoGrid({ initialLogos, locale }: LogoGridProps) {
         observer.unobserve(currentRef);
       }
     };
-  }, [hasMore, isPending, page, loadMoreLogos]);
+  }, [hasMore, isPending, page, loadMorePacks]);
 
   return (
     <div className="w-full">
       <div className="overflow-hidden grid justify-between gap-6 grid-cols-2 md:grid-cols-[repeat(auto-fill,_minmax(240px,_1fr))]">
-        {logos.map((logo) => (
-          <LogoCard key={logo.slug.current} logo={logo} locale={locale} />
+        {packs.map((pack) => (
+          <PackCard key={pack.slug.current} pack={pack} locale={locale} />
         ))}
       </div>
 
@@ -82,7 +82,7 @@ export default function LogoGrid({ initialLogos, locale }: LogoGridProps) {
               <button 
                 onClick={() => {
                   startTransition(() => {
-                    loadMoreLogos();
+                    loadMorePacks();
                   });
                 }}
                 disabled={isPending}
@@ -97,7 +97,7 @@ export default function LogoGrid({ initialLogos, locale }: LogoGridProps) {
             )}
           </>
         )}
-        {!hasMore && logos.length > 0 && (
+        {!hasMore && packs.length > 0 && (
           // 显示全部加载完成
           <p className="text-base-content/60 text-sm">{t('allLoaded')}</p>
         )}

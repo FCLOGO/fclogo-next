@@ -4,11 +4,11 @@ import { UserRoundPlus, BugIcon } from 'lucide-react';
 import type { FullLogoQueryResult } from '@/types';
 
 type Props = {
-  contributor: FullLogoQueryResult['contributor'];
+  contributor?: FullLogoQueryResult['contributor'];
 };
 
 export default function LogoDetailPage({ contributor }: Props) {
-  const t = useTranslations('LogoDetailPage');
+  const t = useTranslations('DetailPage');
   return (
     <div className='flex flex-col gap-4 mt-2 p-6 border-t border-t-base-300'>
       {contributor && (

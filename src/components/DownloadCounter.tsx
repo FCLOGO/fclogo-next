@@ -8,7 +8,7 @@ interface DownloadCounterProps {
 }
 
 export default function DownloadCounter({ count, isUpdating }: DownloadCounterProps) {
-  const t = useTranslations('LogoDetailPage');
+  const t = useTranslations('DetailPage');
   const isCountAvailable = count !== null && count !== undefined;
   return (
     <div className="flex items-center justify-start gap-2 font-semibold">

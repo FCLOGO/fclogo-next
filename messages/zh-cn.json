@@ -8,7 +8,9 @@
     "scrollToBottom": "转到底部",
     "latestLogos": "最新徽标",
     "noData": "暂无数据",
-    "viewAllLogos": "所有徽标"
+    "viewAllLogos": "所有徽标",
+    "latestPacks": "最新徽标集",
+    "viewAllPacks": "所有徽标集"
   },
   "Header": {
     "home": "首页",
@@ -31,10 +33,11 @@
     "competitions": "赛事",
     "nations": "国家/地区"
   },
-  "LogoDetailPage": {
+  "DetailPage": {
     "referenceInfo": "来源参考",
     "outdated": "历史徽标",
     "titleVector": "矢量徽标",
+    "titleVectorPack": "矢量徽标集",
     "inactive": "停止运营",
     "editTips": ".svg 矢量格式",
     "howToEdit": "如何编辑?",

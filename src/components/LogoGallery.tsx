@@ -14,7 +14,7 @@ type Props = {
 }
 
 export default async function LogoGallery({ logo, locale }: Props) {
-  const t = await getTranslations('LogoDetailPage');
+  const t = await getTranslations('DetailPage');
   const subjectName = localize(logo.subject.name, locale);
   return (
     <div className={`flex-grow h-full p-6 flex flex-col items-center justify-center relative ${logo.isBgDark ? 'bg-neutral' : ''}`}>

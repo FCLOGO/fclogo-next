@@ -2,23 +2,24 @@
 import React from 'react';
 import { localize } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
-import type { FullLogoQueryResult } from '@/types';
+import type { FullLogoQueryResult, FullPackQueryResult } from '@/types';
 import { Hash } from 'lucide-react';
 import XIcon from './_icons/X';
 import WeiboIcon from './_icons/Weibo';
 import WikiIcon from './_icons/Wiki';
 import WebsiteIcon from './_icons/Website';
 
-type Props = {
-  logo: FullLogoQueryResult;
+type DetailsProps = {
+  subject: FullLogoQueryResult['subject'] | FullPackQueryResult['sourceSubject']; 
+  alternateNames?: FullLogoQueryResult['alternateNames'];
   locale: string;
 };
 
-export default function LogoDetailPage({ logo, locale }: Props) {
-  const t = useTranslations('LogoDetailPage');
-  const subjectName = localize(logo.subject.name, locale);
-  const subjectInfo = logo.subject.info;
-  const socialLinks = logo.subject.socialLinks;
+export default function LogoDetailPage({ subject, locale, alternateNames }: DetailsProps) {
+  const t = useTranslations('DetailPage');
+  const subjectName = localize(subject.name, locale);
+  const subjectInfo = subject.info;
+  const socialLinks = subject.socialLinks;
   // 详细信息
   const details = [
     { label: 'fullName', value: subjectName },
@@ -47,7 +48,7 @@ export default function LogoDetailPage({ logo, locale }: Props) {
   return (
     <div className='flex flex-col gap-2 mt-2 px-6 pt-6 border-t border-t-base-300'>
       <h3 className="font-semibold text-sm">
-        {`${t(logo.subject._type)}${t('infoTitle')}`}
+        {`${t(subject._type)}${t('infoTitle')}`}
       </h3>
       <table className="text-xs">
         <tbody>
@@ -76,10 +77,10 @@ export default function LogoDetailPage({ logo, locale }: Props) {
         </div>
       )}
       {/* 曾用名 */}
-      {logo.alternateNames && logo.alternateNames.length > 0 && (
+      {alternateNames && alternateNames.length > 0 && (
         <div className='mt-4'>
           <ul className='flex flex-row flex-wrap items-center gap-2 text-xs'>
-            {logo.alternateNames.map(name => (
+            {alternateNames.map(name => (
               <li key={name} className='badge badge-sm badge-outline badge-gray-300 flex flex-row flex-nowrap items-center gap-0.5 text-base-content/50'>
                 <Hash className='w-3 h-3'/>
                 {name}

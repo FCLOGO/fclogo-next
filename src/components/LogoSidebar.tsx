@@ -107,7 +107,7 @@ export default function LogoDetailPage({ logo, locale, initialDownloadCount }: P
     modalRef.current?.close();
   }
   return (
-    <aside className='w-full lg:w-md h-full bg-base-100 flex flex-col border-l border-gray-200 gap-4'>
+    <aside className='w-full flex-shrink-0 lg:w-md h-full bg-base-100 flex flex-col border-l border-gray-200 gap-4'>
       <SidebarHeader logo={logo} locale={locale} />
       <SidebarDownload 
         logo={logo} locale={locale}
@@ -115,7 +115,7 @@ export default function LogoDetailPage({ logo, locale, initialDownloadCount }: P
         downloadCount={currentDownloads}
         isCountUpdating={isPending}
       />
-      <SidebarDetails logo={logo} locale={locale} />
+      <SidebarDetails subject={logo.subject} alternateNames={logo.alternateNames} locale={locale} />
       <SidebarMeta contributor={logo.contributor} />
       <DownloadModal 
         modalRef={modalRef}

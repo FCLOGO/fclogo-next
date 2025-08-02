@@ -14,6 +14,7 @@ export type InternationalizedString = Array<{
 export type Image = SanityImage;
 
 export type LogoCardQueryResult = {
+  _id: string;
   slug: { current: string };
   version: number;
   previewImage: Image;
@@ -29,6 +30,19 @@ export type LogoCardQueryResult = {
   style: {
     title: InternationalizedString;
   };
+};
+
+export type LatestPackQueryResult = {
+  title: InternationalizedString;
+  season: string;
+  slug: { current: string };
+  sourceLogo: {
+    previewImage: Image;
+  };
+  gridLogos: Array<{
+    _id: string;
+    previewImage: Image;
+  }>;
 };
 
 /**
@@ -105,4 +119,41 @@ export type FullLogoQueryResult = {
   otherStyles: LogoFragment[];
   // 该主体的完整徽标历史
   logoHistory: LogoFragment[];
+};
+
+export type FullPackQueryResult = {
+  _id: string;
+  title: InternationalizedString;
+  season: string;
+  slug: { current: string };
+  sourceLogo: {
+    previewImage: Image;
+  };
+  sourceSubject: {
+    _type: 'comp' | 'assn' | 'conf';
+    name: InternationalizedString;
+    info?: {
+      shortName: InternationalizedString;
+      localName?: string;
+      founded?: number;
+      city?: InternationalizedString;
+      ground?: InternationalizedString;
+      duration?: string;
+      association?: string;
+      confederation?: string;
+      level?: InternationalizedString;
+      promotion?: InternationalizedString;
+      relegation?: InternationalizedString;
+      teams?: number;
+      affiliations?: string;
+      headquarter?: InternationalizedString;
+    };
+    socialLinks: {
+      twitterURL?: string;
+      websiteURL?: string;
+      weiboURL?: string;
+      wikiURL?: string;
+    };
+  };
+  items: LogoCardQueryResult[];
 };

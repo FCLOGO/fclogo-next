@@ -11,7 +11,7 @@ type Props = {
 };
 
 export default function LogoDetailPage({ logo, locale}: Props) {
-  const t = useTranslations('LogoDetailPage');
+  const t = useTranslations('DetailPage');
   const subjectName = localize(logo.subject.name, locale);
   return (
     <header className='flex flex-col gap-2 px-6 pt-6'>

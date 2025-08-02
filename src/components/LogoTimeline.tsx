@@ -14,7 +14,7 @@ type Props = {
 }
 
 export default async function LogoTimeline({ history, currentLogoVersion }: Props) {
-  const t = await getTranslations('LogoDetailPage');
+  const t = await getTranslations('DetailPage');
   const isTimelineComplete = history.length > 0 && history[0].subject?.timelineComplete;
   return (
     <section className="border-t border-t-gray-300/50 flex flex-col px-6 py-10 bg-base-200">

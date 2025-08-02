@@ -15,7 +15,7 @@ type Props = {
 };
 
 export default function SidebarDownload({ logo, locale, onDownloadClick, downloadCount, isCountUpdating }: Props) {
-  const t = useTranslations('LogoDetailPage');
+  const t = useTranslations('DetailPage');
   const subjectName = localize(logo.subject.name, locale);
   return (
     <>

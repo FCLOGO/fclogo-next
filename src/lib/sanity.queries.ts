@@ -1,5 +1,5 @@
 import { client } from './sanity.client';
-import type { FullLogoQueryResult } from '@/types';
+import type { FullLogoQueryResult, FullPackQueryResult } from '@/types';
 
 export async function getLogoBySlug(slug: string): Promise<FullLogoQueryResult | null> {
   const query = `*[_type == "logo" && slug.current == $slug][0]{
@@ -80,6 +80,61 @@ export async function getLogoBySlug(slug: string): Promise<FullLogoQueryResult |
     return logo;
   } catch (error) {
     console.error("Failed to fetch logo by slug:", error);
+    return null;
+  }
+}
+
+export async function getPackBySlug(slug: string): Promise<FullPackQueryResult | null> {
+  const query = `*[_type == "logoPack" && slug.current == $slug][0]{
+    _id,
+    title,
+    season,
+    slug,
+    sourceSubject->{
+      _type,
+      name,
+      status,
+      info {
+        shortName,
+        localName,
+        founded,
+        city,
+        ground,
+        duration,
+        association,
+        confederation,
+        level,
+        promotion,
+        relegation,
+        teams,
+        affiliations,
+        headquarter
+      },
+      socialLinks {
+        twitterURL,
+        websiteURL,
+        weiboURL,
+        wikiURL
+      }
+    },
+    sourceLogo->{
+      previewImage
+    },
+    items[]->{
+      _id,
+      slug,
+      previewImage,
+      subject->{
+        name,
+      },
+    }
+  }`;
+  
+  try {
+    const pack = await client.fetch(query, { slug });
+    return pack;
+  } catch (error) {
+    console.error("Failed to fetch pack by slug:", error);
     return null;
   }
 }

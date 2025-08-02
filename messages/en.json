@@ -8,7 +8,9 @@
     "scrollToBottom": "Scroll to Bottom",
     "latestLogos": "Latest Logos",
     "noData": "No data available",
-    "viewAllLogos": "All Logos"
+    "viewAllLogos": "All Logos",
+    "latestPacks": "Latest Packs",
+    "viewAllPacks": "All Packs"
   },
   "Header": {
     "home": "Home",
@@ -31,10 +33,11 @@
     "competitions": "Competitions",
     "nations": "Nations/Regions"
   },
-  "LogoDetailPage": {
+  "DetailPage": {
     "referenceInfo": "Reference",
     "outdated": "Outdated",
     "titleVector": " Vector Logo",
+    "titleVectorPack": " Vector Logos Pack",
     "inactive": "Inactive",
     "editTips": "Vector in .SVG format",
     "howToEdit": "How to Edit?",

@@ -15,7 +15,7 @@ type Props = {
 };
 
 export default function DownloadModal({ modalRef, isDownloading, isCompleted, countdown, downloadUrl, onClose, onTriggerDownload}: Props) {
-  const t = useTranslations('LogoDetailPage');
+  const t = useTranslations('DetailPage');
   // 根据当前状态决定模态框的 UI
   const renderModalContent = () => {
     if (isCompleted) {

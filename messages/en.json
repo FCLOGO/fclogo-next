@@ -91,5 +91,17 @@
     "totalCount": "Total",
     "mapInfo_1": "Active",
     "mapInfo_2": "Inactive"
+  },
+  "LinksPage": {
+    "visitPage": "Visit Home Page",
+    "contactus": "Contact Us",
+    "exchangelinks": "Exchange Links?"
+  },
+  "ContributionPage": {
+    "pageSlogan": "Your contribution is our motivation",
+    "subTitle": "Thanks to everyone who has contributed to the project 🙌",
+    "recentContributions": "Recent Contributions",
+    "totalContributions": "Total",
+    "noSubmit": "No Contributions yet"
   }
 }

@@ -197,3 +197,26 @@ export type ClubDataMap = Record<string, {
   name: InternationalizedString;
   logoImage?: Image; // logoImage 是可选的
 }>;
+
+export type LinkQueryResult = {
+  _id: string;
+  name: string;
+  url: string;
+  description?: string;
+  logo: Image;
+}
+
+export type contributorQueryResult = {
+  _id: string;
+  name: string;
+  avatar?: Image;
+  profileUrl?: string;
+  contributionCount: number;
+  recentContributions: Array<{
+    _id: string;
+    previewImage: Image;
+    slug: {
+      current: string;
+    };
+  }>;
+}

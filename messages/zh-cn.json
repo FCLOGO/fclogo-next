@@ -91,5 +91,17 @@
     "totalCount": "合计",
     "mapInfo_1": "运营中",
     "mapInfo_2": "停止运营"
+  },
+  "LinksPage": {
+    "visitPage": "访问主页",
+    "contactus": "联系我们",
+    "exchangelinks": "交换链接?"
+  },
+  "ContributionPage": {
+    "pageSlogan": "您的贡献是我们的动力",
+    "subTitle": "感谢每一位为项目做出贡献的人 🙌",
+    "recentContributions": "最近贡献",
+    "totalContributions": "总共",
+    "noSubmit": "暂无贡献"
   }
 }

@@ -63,7 +63,7 @@ export default async function LinksPage() {
                     alt={link.name}
                     width={64}
                     height={64}
-                    className="object-contain drop-shadow-lg rounded-full"
+                    className="object-contain drop-shadow-lg rounded-full border-4 border-base-100/50"
                   />
                 </div>
               </div>

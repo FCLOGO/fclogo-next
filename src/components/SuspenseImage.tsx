@@ -47,7 +47,7 @@ export default function SuspenseImage({
   return (
     <div className="relative flex items-center justify-center">
       {isLoading && PlaceholderIconComponent && (
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center w-full h-full">
           <div className="w-1/2 h-1/2 text-base-content/20">
             <PlaceholderIconComponent className={clsx("w-full h-full stroke-gray-300", iconClassName)} />
           </div>

@@ -20,11 +20,12 @@ export default function PackHeader({ pack, locale }: Props) {
       <header className="flex flex-col gap-2 px-6 pt-6 items-start justify-center content-start">
         <SuspenseImage
           src={getOptimizedImage(pack.sourceLogo.previewImage, 150)}
+          placeholderType="comp"
+          iconClassName="stroke-24"
           alt={packTitle}
           width={150}
           height={150}
           className="object-contain mb-6"
-          loadingSpinnerSize="loading-md"
         />
         <section className='flex flex-col items-start gap-2'>
           <span className="font-mono text-4xl text-primary font-bold">{pack.season}</span>

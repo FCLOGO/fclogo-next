@@ -39,6 +39,8 @@ export default function LogoCard({ logo, locale }: LogoCardProps) {
         <SuspenseImage
           src={getOptimizedImage(logo.previewImage, 200)}
           alt={subjectName}
+          placeholderType={"logo"}
+          iconClassName="stroke-24"
           width={200}
           height={200}
           className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"

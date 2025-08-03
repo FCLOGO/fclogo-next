@@ -22,6 +22,8 @@ export default async function LogoGallery({ logo, locale }: Props) {
         {/* 主图 */}
         <SuspenseImage
           src={getOptimizedImage(logo.previewImage, 400)}
+          placeholderType="logo"
+          iconClassName="stroke-24"
           alt={`${subjectName} - v${logo.version}`}
           width={400}
           height={400}
@@ -43,6 +45,8 @@ export default async function LogoGallery({ logo, locale }: Props) {
                 <li key={styleLogo._id} className="m-3">
                   <SuspenseImage
                     src={getOptimizedImage(styleLogo.previewImage, 64)}
+                    placeholderType="logo"
+                    iconClassName="stroke-20"
                     alt={`${subjectName} - v${styleLogo.version}`}
                     width={64}
                     height={64}

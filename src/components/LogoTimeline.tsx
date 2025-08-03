@@ -32,6 +32,8 @@ export default async function LogoTimeline({ history, currentLogoVersion }: Prop
             <Link href={logo.slug.current} className='flex flex-col items-center'>
               <SuspenseImage
                 src={getOptimizedImage(logo.previewImage, 80)}
+                placeholderType="logo"
+                iconClassName="stroke-20"
                 alt={logo.version.toString()}
                 width={80}
                 height={80}

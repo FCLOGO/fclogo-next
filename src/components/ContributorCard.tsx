@@ -1,6 +1,7 @@
 'use client'
 import type { contributorQueryResult } from '@/types';
 import Image from 'next/image';
+import SuspenseImage from './SuspenseImage';
 import { getOptimizedImage } from '@/lib/sanity.image';
 import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
@@ -63,8 +64,10 @@ export default function ContributorCard({ contributor, totalLogoCount }: Props) 
           <div className="grid grid-cols-[repeat(auto-fill,_minmax(48px,_1fr))] justify-between items-center w-full gap-2">
             {contributor.recentContributions.map(logo => (
               <Link key={logo._id} href={logo.slug.current} className="bg-base-200 rounded p-2 hover:bg-base-300">
-                <Image
+                <SuspenseImage
                   src={getOptimizedImage(logo.previewImage, 48)}
+                  placeholderType="logo"
+                  iconClassName="stroke-16"
                   alt=""
                   width={48}
                   height={48}

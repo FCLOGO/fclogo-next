@@ -242,10 +242,11 @@ export default function MapContainer({ geojsonData, countryStats, clubDataMap }:
                   <SuspenseImage
                     src={getOptimizedImage(hoveredClub.logoImage, 120)}
                     alt={localize(hoveredClub.name, locale)}
+                    placeholderType="club"
+                    iconClassName="stroke-20"
                     width={120}
                     height={120}
                     className="object-contain mb-2"
-                    loadingSpinnerSize="loading-sm"
                   />
                 )}
                 <footer className="pt-sm text-center">

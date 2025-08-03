@@ -15,11 +15,12 @@ function PackItem({ logo }: { logo: LogoCardQueryResult }) {
     >
       <SuspenseImage
         src={getOptimizedImage(logo.previewImage, 160)}
+        placeholderType="club"
+        iconClassName="stroke-24"
         alt={""} // 画廊中的图片是装饰性的，alt 为空是合适的
         width={160}
         height={160}
         className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
-        loadingSpinnerSize="loading-md"
       />
     </Link>
   );

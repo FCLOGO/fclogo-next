@@ -103,5 +103,15 @@
     "recentContributions": "最近贡献",
     "totalContributions": "总共",
     "noSubmit": "暂无贡献"
+  },
+  "AboutPage": {
+    "aboutSlogan": "让足球矢量徽标触手可及",
+    "aboutText": "希望每个人都了解足球俱乐部的文化与传承",
+    "milestone": "里程碑"
+  },
+  "NotFoundPage": {
+    "title": "页面未找到",
+    "description": "抱歉，我们似乎找不到您要查找的页面。",
+    "goHome": "返回首页"
   }
 }

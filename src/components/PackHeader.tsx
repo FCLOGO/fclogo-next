@@ -35,7 +35,7 @@ export default function PackHeader({ pack, locale }: Props) {
       <div className='flex flex-col gap-4 px-6 border-t border-t-base-300'>
         <section className='flex flex-col gap-2 mt-4'>
           <h3 className="font-semibold text-sm">{t('termTitle')}</h3>
-          <p className='text-xs'>
+          <p className='text-xs leading-loose'>
             {t.rich(`termText`, { 
               name: packTitle,
               important: (chunks: React.ReactNode) => (
@@ -44,6 +44,8 @@ export default function PackHeader({ pack, locale }: Props) {
                 </span>
               )
             })}
+          </p>
+          <p className='text-xs'>
             <Link href="/support/terms-of-use" className="underline decoration-dotted hover:decoration-solid underline-offset-4 hover:text-primary">
               <b>{t('termMore')}</b>
             </Link>

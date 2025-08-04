@@ -138,3 +138,20 @@ export async function getPackBySlug(slug: string): Promise<FullPackQueryResult |
     return null;
   }
 }
+
+export async function getPageBySlug(slug: string) {
+  const query = `*[_type == "page" && slug.current == $slug][0]{
+    _id,
+    title,
+    enContent,
+    zhContent,
+    timeline
+  }`;
+  try {
+    const page = await client.fetch(query, { slug });
+    return page;
+  } catch (error) {
+    console.error("Failed to fetch page by slug:", error);
+    return null;
+  }
+}

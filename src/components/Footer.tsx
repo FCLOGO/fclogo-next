@@ -23,7 +23,7 @@ export default async function Footer() {
 
   const footerLinks = [
       { name: t('about'), href: '/about' },
-      { name: t('termsOfUse'), href: '/terms-of-use' },
+      { name: t('termsOfUse'), href: '/support/terms-of-use' },
       { name: t('links'), href: '/links' },
   ];
 

@@ -103,5 +103,15 @@
     "recentContributions": "Recent Contributions",
     "totalContributions": "Total",
     "noSubmit": "No Contributions yet"
+  },
+  "AboutPage": {
+    "aboutSlogan": "Access All Football Vector Logos",
+    "aboutText": "Sharing Football Club Culture & Legacy with the World",
+    "milestone": "Milestone"
+  },
+  "NotFoundPage": {
+    "title": "Page Not Found",
+    "description": "Sorry, we couldn't find the page you're looking for.",
+    "goHome": "Go back home"
   }
 }

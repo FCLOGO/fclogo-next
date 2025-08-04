@@ -4,7 +4,7 @@ import NavLink from './NavLink'
 import { menuConfig } from '@/i18n/menuConfig'
 import Logo from '@/components/_icons/FCLOGO';
 import { useTranslations } from 'next-intl';
-import { Menu, Upload } from 'lucide-react';
+import { Menu, Upload, SquareArrowOutUpRight } from 'lucide-react';
 
 export default function Header() {
   const t = useTranslations('Header');
@@ -23,6 +23,15 @@ export default function Header() {
           </NavLink>
         </li>
       ))}
+      <li className='relative'>
+        <a 
+          href="https://news.fclogo.top/" 
+          target="_blank" rel="noopener noreferrer" 
+          className={topMenuLinkClass}>
+            {t('news')}
+        </a>
+        <SquareArrowOutUpRight className="h-2.5 w-2.5 absolute top-6 -right-3.5" />
+      </li>
     </>
   );
 

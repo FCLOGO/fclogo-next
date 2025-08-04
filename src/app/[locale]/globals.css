@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @plugin "daisyui";
 
 @theme {
@@ -59,4 +60,115 @@
   --border: 1px;
   --depth: 1;
   --noise: 0;
+}
+
+@utility prose {
+
+  /* 标题：增加章节间距和分隔线 */
+  h2 {
+    @apply relative;
+
+    /* 在 h2 前添加淡色的章节标记 */
+    &::before {
+      @apply absolute content-['H2'] text-base-content/40 text-xs bottom-1 right-[calc(100%+10px)] font-serif font-medium;
+    }
+  }
+
+  h3 {
+    @apply relative;
+
+    /* 在 h3 前添加淡色的章节标记 */
+    &::before {
+      @apply absolute content-['H3'] text-base-content/40 text-xs bottom-1.5 right-[calc(100%+10px)] font-serif font-medium;
+    }
+  }
+
+  h4 {
+    @apply mb-4 relative;
+
+    /* 在 h4 前添加淡色的章节标记 */
+    &::before {
+      @apply absolute content-['H4'] text-base-content/40 text-xs bottom-0.5 right-[calc(100%+10px)] font-serif font-medium;
+    }
+  }
+
+  /* 链接：默认点状下划线，悬停时为实线 */
+  a {
+    @apply underline decoration-dotted underline-offset-4;
+
+    &:hover {
+      @apply decoration-solid
+    }
+  }
+
+  /* 删除线样式 */
+  del {
+    @apply decoration-wavy decoration-error text-base-content/50;
+  }
+
+  /* 引用块：左侧绿色边框，去除默认引号 */
+  blockquote {
+    @apply border-l-success pl-4 not-italic font-normal;
+
+    blockquote {
+      @apply border-l-gray-300;
+    }
+  }
+
+  /* 移除 blockquote 内段落的默认引号 */
+  blockquote p:first-of-type::before,
+  blockquote p:last-of-type::after {
+    @apply content-none;
+  }
+
+  /* 表格：表头和表格底部添加边框 */
+  table {
+    @apply border-y;
+
+    thead {
+      @apply border-b bg-base-content/5;
+
+      th {
+        @apply p-2;
+
+        &:first-of-type {
+          @apply pl-0;
+        }
+
+        &:last-of-type {
+          @apply pr-0;
+        }
+      }
+    }
+  }
+
+  /* 图片及说明：图片圆角，说明居中并加上符号 */
+  figure {
+    @apply my-6 overflow-hidden;
+
+    img {
+      @apply rounded-lg;
+    }
+
+    figcaption {
+      @apply text-center;
+
+      /* 在说明前添加三角符号 */
+      &::before {
+        @apply content-["\25B2"] mr-1 text-base-content/30;
+      }
+    }
+  }
+
+  /* 修改代码块背景 */
+  pre {
+    @apply bg-base-200 text-base-content border-1 border-base-300;
+  }
+
+  /* 增加任务列表复选框右边距 */
+  .task-list-item {
+    input {
+      @apply mr-1;
+    }
+  }
 }

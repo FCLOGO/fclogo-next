@@ -4,10 +4,12 @@ import NavLink from './NavLink'
 import { menuConfig } from '@/i18n/menuConfig'
 import Logo from '@/components/_icons/FCLOGO';
 import { useTranslations } from 'next-intl';
-import { Menu, Upload, SquareArrowOutUpRight } from 'lucide-react';
+import { useSearchStore } from '@/store/useSearchStore';
+import { Menu, Upload, SquareArrowOutUpRight, Search } from 'lucide-react';
 
 export default function Header() {
   const t = useTranslations('Header');
+  const { open: openSearch } = useSearchStore();
   const topMenuLinkClass = "inline-block uppercase h-16 leading-[4rem] transition-[border-bottom] hover:border-b-4 border-success";
   const activeTopMenuLinkClass = "border-b-4 border-success";
   const menuItems = (
@@ -54,10 +56,14 @@ export default function Header() {
             {menuItems}
           </ul>
         </div>
-        <div className="navbar-end">
-          <button className="shadow-none border-none outline-none btn btn-success rounded-full inline-flex uppercase transition-colors hover:bg-warning">
-            <Upload className="mr-1 w-4 h-4" />
-            {t('submitLogo')}
+        <div className="navbar-end gap-3">
+          <button onClick={openSearch} type="button" className="shadow-none border-none outline-none btn flex items-center gap-1 rounded-full text-left text-sm/6 inset-ring bg-white/5 text-white/50 inset-ring-white/20 focus:outline-0">
+            <Search className='w-4 h-4' />
+            <span className='hidden xl:block'>{t('quickSearch')}</span>
+          </button>
+          <button className="shadow-none border-none outline-none btn btn-success rounded-full inline-flex uppercase transition-colors hover:bg-warning gap-1">
+            <Upload className="w-4 h-4" />
+            <span>{t('submitLogo')}</span>
           </button>
         </div>
       </nav>

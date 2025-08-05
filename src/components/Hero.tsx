@@ -1,6 +1,6 @@
 import { client } from '@/lib/sanity.client';
-import { Search } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
+import SearchBox from './SearchBox';
 
 async function getTotalCount() {
   // GROQ 查询，计算所有类型的徽标总数
@@ -34,14 +34,7 @@ export default async function Hero() {
               })}
           </h2>
           <p className="lg:text-base text-sm my-4 font-medium">{t(`heroSubtitle`)}</p>
-          <section className="relative flex-auto z-20">
-            <input
-              type="text"
-              placeholder={t(`searchPlaceholder`)}
-              className="input input-bordered w-full text-gray-700 h-14 rounded-lg flex-auto order-1 px-xl"
-            />
-            <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 text-neutral z-30" />
-          </section>
+          <SearchBox />
           <p className="my-4 lg:text-base text-sm font-medium">{t(`searchTips`)}</p>
         </div>
       </div>

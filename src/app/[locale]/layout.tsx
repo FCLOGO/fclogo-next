@@ -9,6 +9,7 @@ import Header from '@/components/Header';
 import Footer from "@/components/Footer";
 import DrawerMenu from "@/components/DrawerMenu";
 import FloatingActionGroup from "@/components/FloatingActionGroup";
+import SearchModal from '@/components/SearchModal';
 
 const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
@@ -46,6 +47,7 @@ export default async function LocaleLayout({
             </div>
             <DrawerMenu />
           </div>
+          <SearchModal />
         </NextIntlClientProvider>
       </body>
     </html>

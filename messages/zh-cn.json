@@ -20,7 +20,8 @@
     "contribution": "贡献",
     "news": "新闻",
     "links": "友情链接",
-    "submitLogo": "提交徽标"
+    "submitLogo": "提交徽标",
+    "quickSearch": "快速搜索"
   },
   "Footer": {
     "backToHome": "返回首页",
@@ -113,5 +114,12 @@
     "title": "页面未找到",
     "description": "抱歉，我们似乎找不到您要查找的页面。",
     "goHome": "返回首页"
+  },
+  "Search": {
+    "placeholder": "搜索俱乐部、赛事、国家队...",
+    "resultsFound": "找到 <strong>{count}</strong> 条关于 <strong>{query}</strong> 的搜索结果",
+    "clearSearch": "清除搜索",
+    "searchTips": "输入一个俱乐部名称试试看吧 👆",
+    "noResults": "没有找到 <strong>{query}</strong> 的搜索结果 😶"
   }
 }

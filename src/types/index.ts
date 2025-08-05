@@ -218,3 +218,17 @@ export type contributorQueryResult = {
     };
   }>;
 }
+
+export type LogoSearchResult = {
+  logo_id: string;
+  slug: string;
+  version: number;
+  preview_image_url: string;
+  style_name: string;
+  style_name_zh: string;
+  subject_name: string;
+  subject_name_zh: string;
+  subject_short_name_zh: string;
+  subject_local_name: string;
+  rank: number;
+};

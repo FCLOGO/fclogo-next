@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { useSearchStore } from '@/store/useSearchStore';
 import { useShortcut } from '@/hooks/useShortcut';
+import { usePathname } from '@/i18n/navigation';
 import SearchResultItem from './SearchResultItem';
 import { useTranslations } from 'next-intl';
 import { useSearch } from '@/hooks/useSearch';
@@ -11,6 +12,7 @@ import { Search, X } from 'lucide-react';
 export default function SearchModal() {
   const { isOpen, open, close } = useSearchStore();
   const modalRef = useRef<HTMLDialogElement>(null);
+  const pathname = usePathname();
   const inputRef = useRef<HTMLInputElement>(null);
   const t = useTranslations('Search');
 
@@ -32,20 +34,18 @@ export default function SearchModal() {
     if (modal) {
       if (isOpen && !modal.open) {
         modal.showModal();
+        clearSearch();
+        setTimeout(() => inputRef.current?.focus(), 100);
       } else if (!isOpen && modal.open) {
         modal.close();
       }
     }
-  }, [isOpen]);
-
-  // 模态框打开时，清空上一次的搜索并聚焦输入框
-  useEffect(() => {
-    if (isOpen) {
-      clearSearch();
-      // 使用 setTimeout 确保在模态框动画完成后再聚焦
-      setTimeout(() => inputRef.current?.focus(), 100);
-    }
   }, [isOpen, clearSearch]);
+
+  useEffect(() => {
+    // 当路径发生变化时，关闭模态框
+    close();
+  }, [pathname, close]);
 
   const handleClear = () => {
     clearSearch();

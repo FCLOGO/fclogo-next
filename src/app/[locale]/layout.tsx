@@ -31,7 +31,26 @@ export const metadata: Metadata = {
       'zh-CN': `${siteConfig.baseUrl}/zh-cn/`,
       'x-default': `${siteConfig.baseUrl}/`,
     }
-  }
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US', // 默认的 Open Graph 语言
+    url: siteConfig.baseUrl,
+    title: {
+      default: 'Collection of Football Club Vector Logos - FCLOGO',
+      template: '%s - FCLOGO',
+    },
+    description: "Collection of football club vector logos. All logos work with SVG and PNG. No account and unlimited downloads for free.",
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: `${siteConfig.baseUrl}/logo-share.png`,
+        width: 1200, // 推荐的 OG 图片宽度
+        height: 630, // 推荐的 OG 图片高度
+        alt: 'FCLOGO Website Share Image',
+      },
+    ],
+  },
 };
 
 export default async function LocaleLayout({

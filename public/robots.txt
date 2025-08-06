@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://fclogo.top/sitemap.xml
+Host: https://fclogo.top

@@ -5,6 +5,37 @@ import { getOptimizedImage } from '@/lib/sanity.image';
 import { getTranslations } from 'next-intl/server';
 import { SquareArrowOutUpRight, MailIcon } from 'lucide-react';
 import DiscordIcon from '@/components/_icons/Discord';
+import type { Metadata } from 'next';
+import { siteConfig } from '@/config/site'; 
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations();
+
+  return {
+    title: `${t('LinksPage.pageTitle')} | ${t('HomePage.pageTitle')}`,
+    description: t('HomePage.pageDescription'),
+    openGraph: {
+      title: `${t('LinksPage.pageTitle')} | ${t('HomePage.pageTitle')}`,
+      description: t('HomePage.pageDescription'),
+      images: [
+        {
+          url: `${siteConfig.baseUrl}/logo-share.png`,
+          width: 1200, // 推荐的 OG 图片宽度
+          height: 630, // 推荐的 OG 图片高度
+          alt: 'FCLOGO Website Share Image',
+        },
+      ],
+    },
+    alternates: {
+      canonical: `${siteConfig.baseUrl}/links`,
+      languages: {
+        'en-US': `${siteConfig.baseUrl}/links/`,
+        'zh-CN': `${siteConfig.baseUrl}/zh-cn/links/`,
+        'x-default': `${siteConfig.baseUrl}/links/`
+      },
+    },
+  };
+}
 
 
 async function getAllLinks(): Promise<LinkQueryResult[]> {

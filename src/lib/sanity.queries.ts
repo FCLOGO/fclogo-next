@@ -118,7 +118,8 @@ export async function getPackBySlug(slug: string): Promise<FullPackQueryResult |
       }
     },
     sourceLogo->{
-      previewImage
+      previewImage,
+      pngUrl
     },
     items[]->{
       _id,

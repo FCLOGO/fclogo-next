@@ -6,9 +6,40 @@ import PageHero from "@/components/PageHero";
 import RichTextBlock from '@/components/RichTextBlock';
 import TimelineBlock from '@/components/TimelineBlock';
 import { Sparkles, PartyPopper } from 'lucide-react';
+import type { Metadata } from 'next';
+import { siteConfig } from '@/config/site'; 
 
 type Props = {
   params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations();
+
+  return {
+    title: `${t('AboutPage.pageTitle')} | ${t('HomePage.pageTitle')}`,
+    description: t('HomePage.pageDescription'),
+    openGraph: {
+      title: `${t('AboutPage.pageTitle')} | ${t('HomePage.pageTitle')}`,
+      description: t('HomePage.pageDescription'),
+      images: [
+        {
+          url: `${siteConfig.baseUrl}/logo-share.png`,
+          width: 1200, // 推荐的 OG 图片宽度
+          height: 630, // 推荐的 OG 图片高度
+          alt: 'FCLOGO Website Share Image',
+        },
+      ],
+    },
+    alternates: {
+      canonical: `${siteConfig.baseUrl}/about/`,
+      languages: {
+        'en-US': `${siteConfig.baseUrl}/about/`,
+        'zh-CN': `${siteConfig.baseUrl}/zh-cn/about/`,
+        'x-default': `${siteConfig.baseUrl}/about/`,
+      },
+    },
+  };
 }
 
 export default async function AboutPage({ params }: Props) {

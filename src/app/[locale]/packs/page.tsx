@@ -1,6 +1,37 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getPacksAction } from '@/app/actions/getPacksAction';
 import PackGrid from '@/components/PackGrid';
+import type { Metadata } from 'next';
+import { siteConfig } from '@/config/site'; 
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations();
+
+  return {
+    title: `${t('LogosPage.packTitle')} | ${t('HomePage.pageTitle')}`,
+    description: t('HomePage.pageDescription'),
+    openGraph: {
+      title: `${t('LogosPage.packTitle')} | ${t('HomePage.pageTitle')}`,
+      description: t('HomePage.pageDescription'),
+      images: [
+        {
+          url: `${siteConfig.baseUrl}/logo-share.png`,
+          width: 1200, // 推荐的 OG 图片宽度
+          height: 630, // 推荐的 OG 图片高度
+          alt: 'FCLOGO Website Share Image',
+        },
+      ],
+    },
+    alternates: {
+      canonical: `${siteConfig.baseUrl}/packs`,
+      languages: {
+        'en-US': `${siteConfig.baseUrl}/packs/`,
+        'zh-CN': `${siteConfig.baseUrl}/zh-cn/packs/`,
+        'x-default': `${siteConfig.baseUrl}/packs/`,
+      },
+    },
+  };
+}
 
 export default async function AllLogosPage() {
   const t = await getTranslations('LogosPage');

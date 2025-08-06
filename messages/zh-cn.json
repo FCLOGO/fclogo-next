@@ -1,5 +1,7 @@
 {
   "HomePage": {
+    "pageTitle": "足球俱乐部矢量徽标",
+    "pageDescription": "足球俱乐部矢量徽标收集网站。所有徽标均支持SVG和PNG格式。无需账户，无限制免费下载。",
     "heroTitle": "收集 <count>{totalCount}</count> 个矢量徽标",
     "heroSubtitle": "所有徽标包含 SVG 和 PNG 两种格式。无需账号，无限制免费下载。👋",
     "searchTips": "支持本地化名称搜索：Liverpool，山东泰山，サンフレッチェ広島",
@@ -35,6 +37,9 @@
     "nations": "国家/地区"
   },
   "DetailPage": {
+    "pageDescription": "下载{name}矢量徽标。包含SVG和PNG格式，无需账户，无限制免费下载。",
+    "packTitle": "{season}赛季{name}矢量徽标集",
+    "packDescription": "下载{season}赛季{name}矢量徽标。包含SVG和PNG格式，无需账户，无限制免费下载。",
     "referenceInfo": "来源参考",
     "outdated": "历史徽标",
     "titleVector": "矢量徽标",
@@ -82,23 +87,28 @@
   },
   "LogosPage": {
     "pageTitle": "所有徽标",
+    "packTitle": "徽标集",
     "loading": "加载中...",
     "loadMore": "加载更多",
     "allLoaded": "已全部加载完毕！",
     "noData": "暂无徽标数据。"
   },
   "MapPage": {
+    "pageTitle": "徽标地图",
+    "pageDescription": "足球俱乐部矢量徽标收集网站。所有徽标均支持SVG和PNG格式。无需账户，无限制免费下载。",
     "clubStatistics": "俱乐部统计",
     "totalCount": "合计",
     "mapInfo_1": "运营中",
     "mapInfo_2": "停止运营"
   },
   "LinksPage": {
+    "pageTitle": "友情链接",
     "visitPage": "访问主页",
     "contactus": "联系我们",
     "exchangelinks": "交换链接?"
   },
   "ContributionPage": {
+    "pageTitle": "贡献统计",
     "pageSlogan": "您的贡献是我们的动力",
     "subTitle": "感谢每一位为项目做出贡献的人 🙌",
     "recentContributions": "最近贡献",
@@ -106,6 +116,7 @@
     "noSubmit": "暂无贡献"
   },
   "AboutPage": {
+    "pageTitle": "关于我们",
     "aboutSlogan": "让足球矢量徽标触手可及",
     "aboutText": "希望每个人都了解足球俱乐部的文化与传承",
     "milestone": "里程碑"

@@ -1,6 +1,9 @@
 import { client } from '@/lib/sanity.client';
 import MapContainer from '@/components/MapContainer';
 import type { MapQueryResult, CountryStat, ClubDataMap } from '@/types';
+import { getTranslations } from 'next-intl/server';
+import type { Metadata } from 'next';
+import { siteConfig } from '@/config/site'; 
 
 async function getMapData(): Promise<MapQueryResult[]> {
   const query = `*[_type == "club" && defined(location)]{
@@ -29,6 +32,35 @@ async function getMapData(): Promise<MapQueryResult[]> {
     console.error("Failed to fetch map data:", error);
     return [];
   }
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations();
+
+  return {
+    title: `${t('MapPage.pageTitle')} | ${t('HomePage.pageTitle')}`,
+    description: t('MapPage.pageDescription'),
+    openGraph: {
+      title: `${t('MapPage.pageTitle')} | ${t('HomePage.pageTitle')}`,
+      description: t('MapPage.pageDescription'),
+      images: [
+        {
+          url: `${siteConfig.baseUrl}/logo-share.png`,
+          width: 1200, // 推荐的 OG 图片宽度
+          height: 630, // 推荐的 OG 图片高度
+          alt: 'FCLOGO Website Share Image',
+        },
+      ],
+    },
+    alternates: {
+      canonical: `${siteConfig.baseUrl}/map}`,
+      languages: {
+        'en-US': `${siteConfig.baseUrl}/map/`,
+        'zh-CN': `${siteConfig.baseUrl}/zh-cn/map/`,
+        'x-default': `${siteConfig.baseUrl}/map/`
+      },
+    },
+  };
 }
 
 export default async function LogoMapPage() {

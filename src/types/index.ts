@@ -126,6 +126,7 @@ export type FullPackQueryResult = {
   slug: { current: string };
   sourceLogo: {
     previewImage: Image;
+    pngUrl: string;
   };
   sourceSubject: {
     _type: 'comp' | 'assn' | 'conf';

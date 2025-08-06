@@ -1,13 +1,46 @@
 import { getPackBySlug } from '@/lib/sanity.queries';
 import { notFound } from 'next/navigation';
+import { localize } from '@/lib/utils';
+import { getTranslations } from 'next-intl/server';
+import type { Metadata, ResolvingMetadata } from 'next';
 import PackGallery from '@/components/PackGallery';
 import PackSidebar from '@/components/PackSidebar';
+import { siteConfig } from '@/config/site'; 
 
 type Props = {
   params: Promise<{ 
     slug: string; 
     locale: string;
   }>;
+}
+
+export async function generateMetadata({ params }: Omit<Props, 'children'>, parent: ResolvingMetadata): Promise<Metadata> {
+  const t = await getTranslations('DetailPage');
+  const { locale, slug } = await params;
+  const pack = await getPackBySlug(slug);
+
+  if (!pack) { return { title: 'Pack Not Found' }; }
+
+  const previousImages = (await parent).openGraph?.images || [];
+  const packTitle = localize(pack.title, locale);
+
+  return {
+    title: t('packTitle', { season: pack.season, name: packTitle,}),
+    description: t('packDescription', { season: pack.season, name: packTitle,}),
+    openGraph: {
+      title: t('packTitle', { season: pack.season, name: packTitle,}),
+      description: t('packDescription', { season: pack.season, name: packTitle,}),
+      images: [pack.sourceLogo.pngUrl, ...previousImages],
+    },
+    alternates: {
+      canonical: `${siteConfig.baseUrl}/pack/${slug}`,
+      languages: {
+        'en-US': `${siteConfig.baseUrl}/pack/${slug}`,
+        'zh-CN': `${siteConfig.baseUrl}/zh-cn/pack/${slug}`,
+        'x-default': `${siteConfig.baseUrl}/pack/${slug}`
+      },
+    },
+  };
 }
 
 export const revalidate = 3600 * 24; // 页面每天重新生成一次

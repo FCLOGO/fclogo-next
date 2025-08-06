@@ -1,5 +1,7 @@
 {
   "HomePage": {
+    "pageTitle": "Collection of Football Club Vector Logos",
+    "pageDescription": "Collection of football club vector logos. All logos work with SVG and PNG. No account and unlimited downloads for free.",
     "heroTitle": "Access <count>{totalCount}</count> vector logos",
     "heroSubtitle": "All logos include SVG and PNG formats. No account and unlimited downloads for free.👋",
     "searchTips": "Support localized name: Liverpool, 山东泰山, サンフレッチェ広島",
@@ -35,6 +37,9 @@
     "nations": "Nations/Regions"
   },
   "DetailPage": {
+    "pageDescription": "Download {name} Vector Logo. Includes SVG and PNG formats, no account required, unlimited free downloads.",
+    "packTitle": "{season}'s {name} Vector Logos Pack",
+    "packDescription": "Download {season}'s {name} Vector Logos. Includes SVG and PNG formats, no account required, unlimited free downloads.",
     "referenceInfo": "Reference",
     "outdated": "Outdated",
     "titleVector": " Vector Logo",
@@ -82,23 +87,28 @@
   },
   "LogosPage": {
     "pageTitle": "All Logos",
+    "packTitle": "Logo Packs",
     "loading": "Loading...",
     "loadMore": "Load More",
     "allLoaded": "You've reached the end!",
     "noData": "No logos found."
   },
   "MapPage": {
+    "pageTitle": "Logo Map",
+    "pageDescription": "Collection of football club vector logos. All logos work with SVG and PNG. No account and unlimited downloads for free.",
     "clubStatistics": "Club Statistics",
     "totalCount": "Total",
     "mapInfo_1": "Active",
     "mapInfo_2": "Inactive"
   },
   "LinksPage": {
+    "pageTitle": "Links",
     "visitPage": "Visit Home Page",
     "contactus": "Contact Us",
     "exchangelinks": "Exchange Links?"
   },
   "ContributionPage": {
+    "pageTitle": "Contribution",
     "pageSlogan": "Your contribution is our motivation",
     "subTitle": "Thanks to everyone who has contributed to the project 🙌",
     "recentContributions": "Recent Contributions",
@@ -106,6 +116,7 @@
     "noSubmit": "No Contributions yet"
   },
   "AboutPage": {
+    "pageTitle": "About Us",
     "aboutSlogan": "Access All Football Vector Logos",
     "aboutText": "Sharing Football Club Culture & Legacy with the World",
     "milestone": "Milestone"

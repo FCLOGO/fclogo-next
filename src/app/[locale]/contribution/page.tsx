@@ -3,6 +3,37 @@ import { getTranslations } from 'next-intl/server';
 import PageHero from '@/components/PageHero';
 import ContributorCard from '@/components/ContributorCard';
 import { contributorQueryResult } from '@/types';
+import type { Metadata } from 'next';
+import { siteConfig } from '@/config/site'; 
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations();
+
+  return {
+    title: `${t('ContributionPage.pageTitle')} | ${t('HomePage.pageTitle')}`,
+    description: t('HomePage.pageDescription'),
+    openGraph: {
+      title: `${t('ContributionPage.pageTitle')} | ${t('HomePage.pageTitle')}`,
+      description: t('HomePage.pageDescription'),
+      images: [
+        {
+          url: `${siteConfig.baseUrl}/logo-share.png`,
+          width: 1200, // 推荐的 OG 图片宽度
+          height: 630, // 推荐的 OG 图片高度
+          alt: 'FCLOGO Website Share Image',
+        },
+      ],
+    },
+    alternates: {
+      canonical: `${siteConfig.baseUrl}/contribution`,
+      languages: {
+        'en-US': `${siteConfig.baseUrl}/contribution/`,
+        'zh-CN': `${siteConfig.baseUrl}/zh-cn/contribution/`,
+        'x-default': `${siteConfig.baseUrl}/contribution/`
+      },
+    },
+  };
+}
 
 async function getAllContributors(): Promise<contributorQueryResult[]> {
   const query = `*[_type == "contributor"]{

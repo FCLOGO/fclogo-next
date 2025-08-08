@@ -10,15 +10,7 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  // 继承 Next.js 的核心规则
-  ...compat.extends('next/core-web-vitals'),
-
-  {
-    files: ['src/**/*.{js,jsx,ts,tsx}'], // 指定这些规则应用于 src 目录下的所有文件
-    rules: {
-      '@typescript-eslint/no-explicit-any': 'warn',
-    },
-  },
+  ...compat.extends('next/core-web-vitals', 'next/typescript'),
 ];
 
 export default eslintConfig;

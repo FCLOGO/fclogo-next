@@ -64,7 +64,7 @@ export async function generateMetadata({ params }: Omit<Props, 'children'>, pare
   };
 }
 
-export const revalidate = 3600 * 24; // 页面每天重新生成一次
+export const revalidate = 86400; // 页面每天重新生成一次
 
 export default async function LogoDetailPage({ params }: Props) {
   const { locale, slug } = await params;

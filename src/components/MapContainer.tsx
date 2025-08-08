@@ -15,7 +15,8 @@ import ClubIcon from './_icons/Club';
 
 // 定义从 page.tsx 传来的 props 类型
 type Props = {
-  geojsonData: any; // GeoJSON FeatureCollection
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  geojsonData: any; 
   countryStats: CountryStat[]; // 国家统计数据
   clubDataMap: ClubDataMap;
 };
@@ -93,6 +94,7 @@ export default function MapContainer({ geojsonData, countryStats, clubDataMap }:
   )
 
   // 悬浮事件
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onHover = useCallback((event: any) => {
     const { features } = event;
     const feature = features && features[0];
@@ -128,6 +130,7 @@ export default function MapContainer({ geojsonData, countryStats, clubDataMap }:
   };
   
   // 定义标记样式
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const circleLayerStyle: any = {
     id: 'club-points',
     type: 'circle',

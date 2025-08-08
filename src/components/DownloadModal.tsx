@@ -51,7 +51,7 @@ export default function DownloadModal({ modalRef, isDownloading, isCompleted, co
         {/* 左侧广告位 */}
         <div className="bg-base-200 hidden md:flex items-center justify-center">
           <AdUnit 
-            className='w-full h-full flex items-center justify-center'
+            className='w-full h-full'
             adSlot="5298511752" 
             adFormat='fluid' 
             layoutKey='-6t+ed+2i-1n-4w' 

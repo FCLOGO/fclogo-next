@@ -68,7 +68,7 @@ export default function PackGrid({ initialPacks, locale }: PackGridProps) {
 
   return (
     <div className="w-full">
-      <div className="mb-8 flex items-center justify-center">
+      <div className="mb-8">
         <AdUnit adSlot="1229678468" /> 
       </div>
       <div className="overflow-hidden grid justify-between gap-6 grid-cols-2 md:grid-cols-[repeat(auto-fill,_minmax(240px,_1fr))]">

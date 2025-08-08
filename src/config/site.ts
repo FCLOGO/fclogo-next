@@ -7,6 +7,7 @@ import DiscordIcon from '../components/_icons/Discord';
 export const siteConfig = {
   name: 'FCLOGO',
   baseUrl: 'https://fclogo.top',
+  assetsUrl: 'https://assets.fclogo.top',
   socialLinks: [
     { name: 'Weibo', href: 'https://weibo.com/7578670869', Icon: WeiboIcon },
     { name: 'X', href: 'https://twitter.com/fclogotop', Icon: XIcon },

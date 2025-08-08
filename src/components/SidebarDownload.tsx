@@ -5,6 +5,7 @@ import { ImageIcon, SplinePointer } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import DownloadCounter from './DownloadCounter';
+import { siteConfig } from '@/config/site';
 
 type Props = {
   logo: FullLogoQueryResult;
@@ -17,15 +18,17 @@ type Props = {
 export default function SidebarDownload({ logo, locale, onDownloadClick, downloadCount, isCountUpdating }: Props) {
   const t = useTranslations('DetailPage');
   const subjectName = localize(logo.subject.name, locale);
+  const fullPngUrl = `${siteConfig.assetsUrl}/${logo.pngUrl}`;
+  const fullSvgUrl = `${siteConfig.assetsUrl}/${logo.svgUrl}`;
   return (
     <>
       {/* 下载按钮 */}
       <div className='flex flex-nowrap justify-between items-center gap-4 px-6'>
-        <button onClick={() => onDownloadClick(logo.pngUrl)} className='w-full bg-primary hover:bg-secondary text-primary-content flex flex-nowrap flex-auto items-center h-12 rounded transition-colors duration-600 cursor-pointer'>
+        <button onClick={() => onDownloadClick(fullPngUrl)} className='w-full bg-primary hover:bg-secondary text-primary-content flex flex-nowrap flex-auto items-center h-12 rounded transition-colors duration-600 cursor-pointer'>
           <span className='font-mono text-lg font-bold w-full flex-auto text-center'>PNG</span>
           <ImageIcon className='flex-none w-12 h-12 p-3 border-l border-l-base-100/30 bg-secondary rounded-r' />
         </button>
-        <button onClick={() => onDownloadClick(logo.svgUrl)} className='w-full bg-primary hover:bg-secondary text-primary-content flex flex-nowrap flex-auto items-center h-12 rounded transition-colors duration-600 cursor-pointer'>
+        <button onClick={() => onDownloadClick(fullSvgUrl)} className='w-full bg-primary hover:bg-secondary text-primary-content flex flex-nowrap flex-auto items-center h-12 rounded transition-colors duration-600 cursor-pointer'>
           <span className='font-mono text-lg font-bold w-full flex-auto text-center'>SVG</span>
           <SplinePointer className='flex-none w-12 h-12 p-3 border-l border-l-base-100/30 bg-secondary rounded-r' />
         </button>

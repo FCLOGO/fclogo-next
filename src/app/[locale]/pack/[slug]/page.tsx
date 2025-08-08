@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: Omit<Props, 'children'>, pare
   if (!pack) { return { title: 'Pack Not Found' }; }
 
   const previousImages = (await parent).openGraph?.images || [];
+  const imageUrl = `${siteConfig.assetsUrl}/${pack.sourceLogo.pngUrl}`;
   const packTitle = localize(pack.title, locale);
 
   return {
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: Omit<Props, 'children'>, pare
     openGraph: {
       title: t('packTitle', { season: pack.season, name: packTitle,}),
       description: t('packDescription', { season: pack.season, name: packTitle,}),
-      images: [pack.sourceLogo.pngUrl, ...previousImages],
+      images: [imageUrl, ...previousImages],
     },
     alternates: {
       canonical: `${siteConfig.baseUrl}/pack/${slug}`,

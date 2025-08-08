@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: Omit<Props, 'children'>, pare
   return {
     title: `${subjectName}${t('titleVector')}`,
     description: t('pageDescription', { name: subjectName}),
-    keywords: combinedKeywords,
+    // keywords: combinedKeywords,
     openGraph: {
       title: `${subjectName}${t('titleVector')} - FCLOGO`,
       description: t('pageDescription', { name: subjectName}),

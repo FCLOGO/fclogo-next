@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { Search, Home, ArrowLeft } from 'lucide-react';
+import { Home } from 'lucide-react';
 
 export default function NotFoundPage() {
   const t = useTranslations('NotFoundPage');

@@ -1,7 +1,7 @@
 'use client'; 
 import { Link } from '@/i18n/navigation';
 import NavLink from './NavLink'
-import { menuConfig } from '@/i18n/menuConfig'
+import { menuConfig } from '@/config/menuConfig'
 import Logo from '@/components/_icons/FCLOGO';
 import { useTranslations } from 'next-intl';
 import { useSearchStore } from '@/store/useSearchStore';

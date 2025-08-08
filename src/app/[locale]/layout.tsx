@@ -11,6 +11,7 @@ import DrawerMenu from "@/components/DrawerMenu";
 import FloatingActionGroup from "@/components/FloatingActionGroup";
 import SearchModal from '@/components/SearchModal';
 import { siteConfig } from '@/config/site'; 
+import { Adsense } from '@/components/Adsense';
 
 const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
@@ -67,6 +68,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
   return (
     <html lang={locale} data-theme="light">
+      <head><Adsense /></head>
       <body className={`${jetBrainsMono.variable} antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <div className="drawer">

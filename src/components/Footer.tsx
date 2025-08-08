@@ -1,25 +1,13 @@
 // 'use client'; 
 import { Link } from '@/i18n/navigation';
 import { getLocale, getTranslations } from 'next-intl/server'
+import { siteConfig } from '@/config/site'; 
 import FooterStats from './FooterStats';
 import Logo from './_icons/FCLOGO';
-import WeiboIcon from './_icons/Weibo';
-import XIcon from './_icons/X';
-import InstagramIcon from './_icons/Instagram';
-import FacebookIcon from './_icons/Facebook';
-import DiscordIcon from './_icons/Discord';
 
 export default async function Footer() {
   const t = await getTranslations('Footer');
   const locale = await getLocale();
-
-  const socialLinks = [
-    { name: 'Weibo', href: '#', Icon: WeiboIcon },
-    { name: 'X', href: '#', Icon: XIcon },
-    { name: 'Instagram', href: '#', Icon: InstagramIcon },
-    { name: 'Facebook', href: '#', Icon: FacebookIcon },
-    { name: 'Discord', href: '#', Icon: DiscordIcon },
-  ];
 
   const footerLinks = [
       { name: t('about'), href: '/about' },
@@ -39,7 +27,7 @@ export default async function Footer() {
             <FooterStats locale={locale} />
             <div className='flex flex-col items-center lg:items-end gap-6'>
               <div className="flex items-center gap-6">
-                {socialLinks.map(({ name, href, Icon }) => (
+                {siteConfig.socialLinks.map(({ name, href, Icon }) => (
                   <a 
                     key={name}
                     href={href}

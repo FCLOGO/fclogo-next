@@ -1,6 +1,6 @@
 'use client'; 
 import NavLink from './NavLink'
-import { menuConfig } from '@/i18n/menuConfig';
+import { menuConfig } from '@/config/menuConfig';
 import { useTranslations } from 'next-intl';
 
 export default function DrawerMenu() {

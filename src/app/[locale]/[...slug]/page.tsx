@@ -31,10 +31,13 @@ export async function generateMetadata({ params }: Omit<Props, 'children'>, pare
   // 获取父级布局的 OpenGraph 图片
   const parentMetadata = await parent;
   const previousImages = parentMetadata.openGraph?.images || [];
+
+  const previousKeywords = parentMetadata.keywords || [];
   
   return {
     title: `${subjectName}${t('titleVector')}`,
     description: t('pageDescription', { name: subjectName}),
+    keywords: [...previousKeywords, subjectName],
     openGraph: {
       title: `${subjectName}${t('titleVector')} - FCLOGO`,
       description: t('pageDescription', { name: subjectName}),

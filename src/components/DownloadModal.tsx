@@ -3,6 +3,7 @@ import React from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { X, Check } from 'lucide-react';
+import AdUnit from './AdUnit';
 
 type Props = {
   modalRef: React.RefObject<HTMLDialogElement | null>;
@@ -49,7 +50,12 @@ export default function DownloadModal({ modalRef, isDownloading, isCompleted, co
         </button>
         {/* 左侧广告位 */}
         <div className="bg-base-200 hidden md:flex items-center justify-center">
-          <span className="text-base-content/50">广告位占位符</span>
+          <AdUnit 
+            className='w-full h-full'
+            adSlot="5298511752" 
+            adFormat='fluid' 
+            layoutKey='-6t+ed+2i-1n-4w' 
+          /> 
         </div>
         {/* 右侧下载逻辑 */}
         <div className="flex flex-col items-center justify-center px-10 py-20 gap-6">

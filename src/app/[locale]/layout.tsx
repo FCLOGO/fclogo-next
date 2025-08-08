@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: '%s - FCLOGO',
   },
   description: "Collection of football club vector logos. All logos work with SVG and PNG. No account and unlimited downloads for free.",
-  keywords: `football, football club, logo, vector, vector logo, football logo, football badge, football crest, AI, SVG`,
+  keywords: `football,football club,logo,vector,vector logo,football logo,football badge,football crest,AI,SVG`,
   alternates: {
     canonical: siteConfig.baseUrl,
     languages: {

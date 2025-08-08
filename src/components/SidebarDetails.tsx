@@ -4,6 +4,7 @@ import { localize } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
 import type { FullLogoQueryResult, FullPackQueryResult } from '@/types';
 import { Hash } from 'lucide-react';
+import AdUnit from './AdUnit';
 import XIcon from './_icons/X';
 import WeiboIcon from './_icons/Weibo';
 import WikiIcon from './_icons/Wiki';
@@ -46,49 +47,54 @@ export default function LogoDetailPage({ subject, locale, alternateNames }: Deta
     { url: socialLinks.wikiURL, icon: WikiIcon },
   ];
   return (
-    <div className='flex flex-col gap-2 mt-2 px-6 pt-6 border-t border-t-base-300'>
-      <h3 className="font-semibold text-sm">
-        {`${t(subject._type)}${t('infoTitle')}`}
-      </h3>
-      <table className="text-xs">
-        <tbody>
-          {details.map(item => item.value ? (
-            <tr key={item.label}>
-              <th className="text-left py-2 pr-2">{t(item.label)}</th>
-              <td>{item.value}</td>
-            </tr>
-          ) : null)}
-        </tbody>
-      </table>
-      {/* 相关链接 */}
-      {Links && Links.length > 0 && (
-        <div className='flex flex-row gap-1 mt-4'>
-          {Links.filter(({ url }) => !!url).map(({ url, icon }) => (
-            <a 
-              key={url}
-              href={url} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="h-10 w-10 p-2.5 hover:bg-neutral/10 rounded"
-            >
-              {React.createElement(icon, { className: "w-5 h-5" })}
-            </a>
-          ))}
-        </div>
-      )}
-      {/* 曾用名 */}
-      {alternateNames && alternateNames.length > 0 && (
-        <div className='mt-4'>
-          <ul className='flex flex-row flex-wrap items-center gap-2 text-xs'>
-            {alternateNames.map(name => (
-              <li key={name} className='badge badge-sm badge-outline badge-gray-300 flex flex-row flex-nowrap items-center gap-0.5 text-base-content/50'>
-                <Hash className='w-3 h-3'/>
-                {name}
-              </li>
+    <>
+      <div className="mt-2 px-6">
+          <AdUnit adSlot="5850965230" adFormat='fluid' layoutKey='-e0+7z-36-93+si' /> 
+      </div>
+      <div className='flex flex-col gap-2 mt-2 px-6 pt-6 border-t border-t-base-300'>
+        <h3 className="font-semibold text-sm">
+          {`${t(subject._type)}${t('infoTitle')}`}
+        </h3>
+        <table className="text-xs">
+          <tbody>
+            {details.map(item => item.value ? (
+              <tr key={item.label}>
+                <th className="text-left py-2 pr-2">{t(item.label)}</th>
+                <td>{item.value}</td>
+              </tr>
+            ) : null)}
+          </tbody>
+        </table>
+        {/* 相关链接 */}
+        {Links && Links.length > 0 && (
+          <div className='flex flex-row gap-1 mt-4'>
+            {Links.filter(({ url }) => !!url).map(({ url, icon }) => (
+              <a 
+                key={url}
+                href={url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="h-10 w-10 p-2.5 hover:bg-neutral/10 rounded"
+              >
+                {React.createElement(icon, { className: "w-5 h-5" })}
+              </a>
             ))}
-          </ul>
-        </div>
-      )}
-    </div>
+          </div>
+        )}
+        {/* 曾用名 */}
+        {alternateNames && alternateNames.length > 0 && (
+          <div className='mt-4'>
+            <ul className='flex flex-row flex-wrap items-center gap-2 text-xs'>
+              {alternateNames.map(name => (
+                <li key={name} className='badge badge-sm badge-outline badge-gray-300 flex flex-row flex-nowrap items-center gap-0.5 text-base-content/50'>
+                  <Hash className='w-3 h-3'/>
+                  {name}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </>
   );
 }

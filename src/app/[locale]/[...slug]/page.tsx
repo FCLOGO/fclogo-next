@@ -30,24 +30,11 @@ export async function generateMetadata({ params }: Omit<Props, 'children'>, pare
 
   // 获取父级布局的 OpenGraph 图片
   const parentMetadata = await parent;
-  const parentKeywords = parentMetadata.keywords || [];
   const previousImages = parentMetadata.openGraph?.images || [];
-
-  const currentPageKeywords = [
-    subjectName, 
-    localize(logo.subject.info.shortName, locale),
-    logo.subject.info.localName,
-    ...(logo.alternateNames || []) // 将曾用名也加入关键词
-  ].filter(Boolean); // 过滤掉空值
   
-  const combinedKeywords = [
-    // 使用 Set 来自动处理重复的关键词
-    ...new Set([...parentKeywords, ...currentPageKeywords])
-  ];
   return {
     title: `${subjectName}${t('titleVector')}`,
     description: t('pageDescription', { name: subjectName}),
-    // keywords: combinedKeywords,
     openGraph: {
       title: `${subjectName}${t('titleVector')} - FCLOGO`,
       description: t('pageDescription', { name: subjectName}),

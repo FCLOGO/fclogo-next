@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect, useRef, useTransition } from 'react';
 import type { FullLogoQueryResult } from '@/types';
-import { updateDownloadCountAction } from '@/app/actions/updateDownloadCountAction';
+// import { updateDownloadCountAction } from '@/app/actions/updateDownloadCountAction';
+import { updateSupabaseCountAction } from '@/app/actions/supabaseActions';
 import SidebarHeader from './SidebarHeader';
 import SidebarDownload from './SidebarDownload';
 import SidebarDetails from './SidebarDetails';
@@ -76,7 +77,7 @@ export default function LogoDetailPage({ logo, locale, initialDownloadCount }: P
           setIsCompleted(true);
           if (downloadSuccess) {
             startTransition(() => {
-              updateDownloadCountAction(logoId, logoSlug).then(result => {
+              updateSupabaseCountAction(logoId, logoSlug).then(result => {
                 if (result.success && result.newCount !== null) {
                   setCurrentDownloads(result.newCount);
                 }

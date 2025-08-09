@@ -1,12 +1,14 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import SearchResultItem from './SearchResultItem';
+import TopDownloads from './TopDownloads';
 import { useTranslations } from 'next-intl';
 import { Search, X } from 'lucide-react';
 import clsx from 'clsx';
 import { useShortcut } from '@/hooks/useShortcut';
 import { useSearch } from '@/hooks/useSearch';
+import { useClickOutside } from '@/hooks/useClickOutside';
 
 
 export default function SearchBox() {
@@ -19,8 +21,13 @@ export default function SearchBox() {
     clearSearch,
     locale 
   } = useSearch();
+  const [hasFocus, setHasFocus] = useState(false);
   const t = useTranslations('Search');
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const searchContainerRef = useClickOutside<HTMLDivElement>(() => {
+    setHasFocus(false);
+  });
 
   const handleClear = () => {
     clearSearch();
@@ -30,20 +37,24 @@ export default function SearchBox() {
   useShortcut('escape', () => {
     if (searchTerm) {
       handleClear();
+    } else {
+      inputRef.current?.blur();
+      setHasFocus(false);
     }
   });
 
   return (
-    <div className="relative z-50">
+    <div className="relative z-50" ref={searchContainerRef}>
       {/* 搜索输入框 */}
       <div className={clsx(
         "relativee h-16 bg-base-100 rounded flex flex-nowrap justify-between items-center shadow-box",
-        {"rounded-b-none": (isLoading || results.length >0) }
+        {"rounded-b-none": hasFocus }
       )}>
         <input 
           type="text"
           ref={inputRef}
           value={searchTerm}
+          onFocus={() => setHasFocus(true)}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder={t('placeholder')}
           className="border-none text-base w-full h-16 rounded flex-auto order-1 px-12 text-base-content outline-none focus:outline-none focus:border-none"
@@ -62,9 +73,10 @@ export default function SearchBox() {
         </div>
         <Search className="text-base-content absolute left-4 top-1/2 -translate-y-1/2" />
       </div>
-      {(isLoading || results.length >0) && (
-        <div className="bg-base-100 min-h-[100px] w-full absolute top-16 rounded-b-lg flex flex-col shadow-box">
-          <section className="w-full max-h-[300px] overflow-x-hidden overflow-y-auto p-6 border-t border-dashed border-gray-300">
+      {hasFocus && (
+        <div className="bg-base-100 min-h-25 w-full absolute top-16 rounded-b-lg flex flex-col shadow-xl">
+          <section className="w-full max-h-100 overflow-x-hidden overflow-y-auto p-6 border-t border-dashed border-gray-300">
+
             {/* 加载与结果状态 */}
             {isLoading && (
               <div className="flex justify-center">
@@ -80,12 +92,14 @@ export default function SearchBox() {
                 })}
               </p>
             )}
-            {!isLoading && results.length > 0 && (
+            {!isLoading && results.length > 0 ? (
               <div className="space-y-4">
                 {results.map(result => (
                   <SearchResultItem key={result.logo_id} result={result} locale={locale} />
                 ))}
               </div>
+            ) : (
+              <TopDownloads />
             )}
           </section>
         </div>

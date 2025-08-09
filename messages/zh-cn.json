@@ -131,6 +131,7 @@
     "resultsFound": "找到 <strong>{count}</strong> 条关于 <strong>{query}</strong> 的搜索结果",
     "clearSearch": "清除搜索",
     "searchTips": "输入一个俱乐部名称试试看吧 👆",
-    "noResults": "没有找到 <strong>{query}</strong> 的搜索结果 😶"
+    "noResults": "没有找到 <strong>{query}</strong> 的搜索结果 😶",
+    "topDownloads": "🔥 热门下载"
   }
 }

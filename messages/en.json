@@ -131,6 +131,7 @@
     "resultsFound": "Found <strong>{count}</strong> results for <strong>{query}</strong>",
     "clearSearch": "Clear Search",
     "searchTips": "Enter a club name to try it out 👆",
-    "noResults": "No results have been found for <strong>{quer}}</strong> 😶"
+    "noResults": "No results have been found for <strong>{quer}}</strong> 😶",
+    "topDownloads": "🔥 Top Downloads"
   }
 }

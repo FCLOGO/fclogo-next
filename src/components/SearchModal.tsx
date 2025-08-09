@@ -5,6 +5,7 @@ import { useSearchStore } from '@/store/useSearchStore';
 import { useShortcut } from '@/hooks/useShortcut';
 import { usePathname } from '@/i18n/navigation';
 import SearchResultItem from './SearchResultItem';
+import TopDownloads from './TopDownloads';
 import { useTranslations } from 'next-intl';
 import { useSearch } from '@/hooks/useSearch';
 import { Search, X } from 'lucide-react';
@@ -102,18 +103,21 @@ export default function SearchModal() {
               })}
             </p>
           )}
-          {!isLoading && results.length > 0 && (
+          {!isLoading && results.length > 0 ? (
             <div className="space-y-4">
               {results.map(result => (
                 <SearchResultItem key={result.logo_id} result={result} locale={locale} />
               ))}
             </div>
+          ) : (
+            <TopDownloads />
           )}
-          {!isLoading && results.length === 0 && (
-            <div className="text-center p-8 text-base-content/60">
+          {/* {!isLoading && results.length === 0 && (
+            <div className="text-left text-base-content/60">
               <p className='text-sm'>{t('searchTips')}</p> 
+              <TopDownloads />
             </div>
-          )}
+          )} */}
         </div>
       </div>
       <form method="dialog" className="modal-backdrop backdrop-blur">

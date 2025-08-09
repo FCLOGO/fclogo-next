@@ -1,5 +1,6 @@
 import { getLogoBySlug } from '@/lib/sanity.queries';
-import { getCountAction } from '@/app/actions/getCountsAction'; 
+// import { getCountAction } from '@/app/actions/getCountsAction'; 
+import { getSupabaseCountAction } from '@/app/actions/supabaseActions';
 import { notFound } from 'next/navigation';
 import { localize } from '@/lib/utils';
 import type { Metadata, ResolvingMetadata } from 'next';
@@ -66,7 +67,7 @@ export default async function LogoDetailPage({ params }: Props) {
     notFound(); // 如果找不到徽标，显示 404 页面
   }
 
-  const initialDownloadCount = await getCountAction(logo._id);
+  const initialDownloadCount = await getSupabaseCountAction(logo._id);
 
   return (
     <main className="w-full h-auto mx-auto flex-grow flex flex-col">

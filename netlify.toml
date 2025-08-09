@@ -1,0 +1,7 @@
+[build]
+  command = "pnpm build"
+  publish = ".next"
+
+[functions]
+  directory = "netlify/functions"
+  included_files = ["node_modules/**"]

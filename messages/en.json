@@ -127,7 +127,7 @@
     "goHome": "Go back home"
   },
   "Search": {
-    "placeholder": "Search clubs, competitions, national teams...",
+    "placeholder": "Enter a club name to try it out...",
     "resultsFound": "Found <strong>{count}</strong> results for <strong>{query}</strong>",
     "clearSearch": "Clear Search",
     "searchTips": "Enter a club name to try it out 👆",

@@ -9,7 +9,7 @@ export async function getLogosAction(page: number): Promise<LogoCardQueryResult[
   const start = page * PAGE_SIZE;
   const end = start + PAGE_SIZE;
 
-  const query = `*[_type == "logo"] | order(dateOriginal desc) [${start}...${end}] {
+  const query = `*[_type == "logo"] | order(coalesce(dateOriginal, _createdAt) desc) [${start}...${end}] {
     slug,
     version,
     isBgDark,

@@ -6,7 +6,7 @@ import type { LogoCardQueryResult } from '@/types';
 import { ArrowUpRight } from 'lucide-react';
 
 async function getLatestLogos(): Promise<LogoCardQueryResult[]> {
-  const query = `*[_type == "logo"] | order(dateOriginal desc) [0...12] {
+  const query = `*[_type == "logo"] | order(coalesce(dateOriginal, _createdAt) desc) [0...12] {
     slug,
     version,
     isBgDark,

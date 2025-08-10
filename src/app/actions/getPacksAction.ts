@@ -9,7 +9,7 @@ export async function getPacksAction(page: number): Promise<LatestPackQueryResul
   const start = page * PAGE_SIZE;
   const end = start + PAGE_SIZE;
 
-  const query = `*[_type == "logoPack"] | order(dateOriginal desc) [${start}...${end}] {
+  const query = `*[_type == "logoPack"] | order(coalesce(dateOriginal, _createdAt) desc) [${start}...${end}] {
     title,
     season,
     slug,

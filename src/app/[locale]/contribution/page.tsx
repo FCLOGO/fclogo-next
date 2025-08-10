@@ -42,7 +42,7 @@ async function getAllContributors(): Promise<contributorQueryResult[]> {
     avatar,
     profileUrl,
     "contributionCount": count(*[_type == "logo" && references(^._id)]),
-    "recentContributions": *[_type == "logo" && references(^._id)] | order(dateOriginal desc)[0...10]{
+    "recentContributions": *[_type == "logo" && references(^._id)] | order(coalesce(dateOriginal, _createdAt) desc)[0...10]{
       _id,
       previewImage,
       slug

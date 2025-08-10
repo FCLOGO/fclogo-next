@@ -6,7 +6,7 @@ import type { LatestPackQueryResult } from '@/types';
 import { ArrowUpRight } from 'lucide-react';
 
 async function getLatestPacks(): Promise<LatestPackQueryResult[]> {
-  const query = `*[_type == "logoPack"] | order(dateOriginal desc) [0...12] {
+  const query = `*[_type == "logoPack"] | order(coalesce(dateOriginal, _createdAt) desc) [0...12] {
     title,
     season,
     slug,

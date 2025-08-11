@@ -14,7 +14,7 @@ export default function LogoCard({ pack, locale }: Props) {
 
   return (
     <Link href={`/pack/${pack.slug.current}`} className="card bg-base-100 shadow-box group overflow-hidden border border-base-200 hover:border-gray-300">
-      <div className="grid grid-cols-3 p-6 gap-2 aspect-square bg-base-100 justify-center content-start">
+      <div className="grid grid-cols-3 p-6 gap-2 flex-grow bg-base-100 justify-center content-start">
         {pack.gridLogos.map((logo) => (
           <div key={logo._id} className="flex items-center justify-center p-2">
             <SuspenseImage
@@ -29,7 +29,7 @@ export default function LogoCard({ pack, locale }: Props) {
           </div>
         ))}
       </div>
-      <div className="card-body gap-1 bg-base-100 h-20 w-full flex flex-row flex-nowrap justify-between items-center content-center border-t border-gray-300 border-dashed">
+      <div className="card-body flex-none gap-1 bg-base-100 h-20 w-full flex flex-row flex-nowrap justify-between items-center content-center border-t border-gray-300 border-dashed">
         <div className="flex items-center gap-2 flex-auto">
           <span className="badge badge-sm badge-success font-mono flex-none font-semibold px-1.5">{pack.season}</span>
           <h2 className="card-title text-sm line-clamp-1">{packTitle}</h2>

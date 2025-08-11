@@ -111,7 +111,7 @@ export default async function LogoMapPage() {
   const countryStats = Object.values(nationCount).sort((a: CountryStat, b: CountryStat) => b.count - a.count);
 
   return (
-    <main className="w-full m-auto p-6 flex flex-grow flex-col flex-nowrap items-start h-[calc(100vh - 4rem)]">
+    <main className="w-full m-auto p-6 flex flex-grow flex-col flex-nowrap items-start h-[calc(100vh - 4rem)] min-h-150">
       <MapContainer 
         geojsonData={geojsonData} 
         countryStats={countryStats} 

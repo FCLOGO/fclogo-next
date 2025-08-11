@@ -61,10 +61,14 @@ export default function Header() {
             <Search className='w-4 h-4' />
             <span className='hidden xl:block'>{t('quickSearch')}</span>
           </button>
-          <button className="shadow-none border-none outline-none btn btn-success rounded-full inline-flex uppercase transition-colors hover:bg-warning gap-1">
+          <a 
+            href="https://github.com/orgs/FCLOGO/discussions/categories/submit-logos" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="shadow-none border-none outline-none btn btn-success rounded-full inline-flex uppercase transition-colors hover:bg-warning gap-1">
             <Upload className="w-4 h-4" />
             <span>{t('submitLogo')}</span>
-          </button>
+          </a>
         </div>
       </nav>
     </header>

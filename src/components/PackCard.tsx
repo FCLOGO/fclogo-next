@@ -14,7 +14,7 @@ export default function LogoCard({ pack, locale }: Props) {
 
   return (
     <Link href={`/pack/${pack.slug.current}`} className="card bg-base-100 shadow-box group overflow-hidden border border-base-200 hover:border-gray-300">
-      <div className="grid grid-cols-3 p-6 gap-2 flex-grow bg-base-100 justify-center content-start">
+      <div className="grid grid-cols-3 p-6 gap-2 aspect-square flex-grow bg-base-100 justify-center content-between">
         {pack.gridLogos.map((logo) => (
           <div key={logo._id} className="flex items-center justify-center p-2">
             <SuspenseImage

@@ -71,7 +71,7 @@ export default function LogoGrid({ initialLogos, locale }: LogoGridProps) {
       <div className="mb-8">
         <AdUnit adSlot="1229678468" className='w-full text-center' /> 
       </div>
-      <div className="overflow-hidden grid justify-between gap-6 grid-cols-2 md:grid-cols-[repeat(auto-fill,_minmax(240px,_1fr))]">
+      <div className="overflow-hidden grid justify-between gap-6 grid-cols-[repeat(auto-fill,_minmax(240px,_1fr))]">
         {logos.map((logo) => (
           <LogoCard key={logo.slug.current} logo={logo} locale={locale} />
         ))}

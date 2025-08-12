@@ -49,7 +49,7 @@ export default async function LatestPacks() {
         </button>
       </div>
       {packs.length > 0 ? (
-        <div className="w-full overflow-hidden grid justify-between gap-8 grid-cols-2 md:grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))]">
+        <div className="w-full overflow-hidden grid justify-between gap-8 grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))]">
           {packs.map((pack) => (
             <PackCard key={pack.season} pack={pack} locale={locale} />
           ))}

@@ -52,7 +52,7 @@ export default async function LatestLogos() {
         </button>
       </div>
       {logos.length > 0 ? (
-        <div className="w-full overflow-hidden grid justify-between gap-8 grid-cols-2 md:grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))]">
+        <div className="w-full overflow-hidden grid justify-between gap-8 grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))]">
           {logos.map((logo: LogoCardQueryResult) => (
             <LogoCard key={logo.slug.current} logo={logo} locale={locale} />
           ))}

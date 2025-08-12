@@ -59,7 +59,7 @@ export default function Header() {
         <div className="navbar-end gap-3">
           <button onClick={openSearch} type="button" className="shadow-none border-none outline-none btn flex items-center gap-1 rounded-full text-left text-sm/6 inset-ring bg-white/5 text-white/50 inset-ring-white/20 focus:outline-0">
             <Search className='w-4 h-4' />
-            <span className='hidden xl:block'>{t('quickSearch')}</span>
+            <span className='hidden lg:block'>{t('quickSearch')}</span>
           </button>
           <a 
             href="https://github.com/orgs/FCLOGO/discussions/categories/submit-logos" 
@@ -67,7 +67,7 @@ export default function Header() {
             rel="noopener noreferrer" 
             className="shadow-none border-none outline-none btn btn-success rounded-full inline-flex uppercase transition-colors hover:bg-warning gap-1">
             <Upload className="w-4 h-4" />
-            <span>{t('submitLogo')}</span>
+            <span className='hidden md:block'>{t('submitLogo')}</span>
           </a>
         </div>
       </nav>

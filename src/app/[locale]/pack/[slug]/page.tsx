@@ -21,17 +21,20 @@ export async function generateMetadata({ params }: Omit<Props, 'children'>, pare
 
   if (!pack) { return { title: 'Pack Not Found' }; }
 
-  const previousImages = (await parent).openGraph?.images || [];
+  const parentMetadata = await parent;
+  // const previousImages = (await parent).openGraph?.images || [];
+  const previousKeywords = parentMetadata.keywords || [];
   const imageUrl = `${siteConfig.assetsUrl}/${pack.sourceLogo.pngUrl}`;
   const packTitle = localize(pack.title, locale);
 
   return {
     title: t('packTitle', { season: pack.season, name: packTitle,}),
     description: t('packDescription', { season: pack.season, name: packTitle,}),
+    keywords: [...previousKeywords, packTitle],
     openGraph: {
       title: t('packTitle', { season: pack.season, name: packTitle,}),
       description: t('packDescription', { season: pack.season, name: packTitle,}),
-      images: [imageUrl, ...previousImages],
+      images: imageUrl,
     },
     alternates: {
       canonical: `${siteConfig.baseUrl}/pack/${slug}`,

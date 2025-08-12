@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Omit<Props, 'children'>, pare
 
   // 获取父级布局的 OpenGraph 图片
   const parentMetadata = await parent;
-  const previousImages = parentMetadata.openGraph?.images || [];
+  // const previousImages = parentMetadata.openGraph?.images || [];
   const imageUrl = `${siteConfig.assetsUrl}/${logo.pngUrl}`;
 
   const previousKeywords = parentMetadata.keywords || [];
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: Omit<Props, 'children'>, pare
     openGraph: {
       title: `${subjectName}${t('titleVector')} - FCLOGO`,
       description: t('pageDescription', { name: subjectName}),
-      images: [imageUrl, ...previousImages],
+      images: imageUrl,
     },
     alternates: {
       canonical: `${siteConfig.baseUrl}${fullSlug}`,

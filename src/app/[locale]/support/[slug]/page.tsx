@@ -7,6 +7,8 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { siteConfig } from '@/config/site';
 
+export const revalidate = false; 
+
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
 }

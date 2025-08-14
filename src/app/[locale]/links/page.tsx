@@ -8,6 +8,8 @@ import DiscordIcon from '@/components/_icons/Discord';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site'; 
 
+export const revalidate = 604800; // 页面每周重新生成一次
+
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations();
 

@@ -5,6 +5,8 @@ import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site'; 
 
+export const revalidate = 604800; // 页面每周重新生成一次
+
 async function getMapData(): Promise<MapQueryResult[]> {
   const query = `*[_type == "club" && defined(location)]{
     _id,

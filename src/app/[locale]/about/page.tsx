@@ -9,6 +9,8 @@ import { Sparkles, PartyPopper } from 'lucide-react';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site'; 
 
+export const revalidate = false; 
+
 type Props = {
   params: Promise<{ locale: string }>;
 }

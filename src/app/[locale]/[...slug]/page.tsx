@@ -10,6 +10,8 @@ import LogoSidebar from '@/components/LogoSidebar';
 import LogoTimeline from '@/components/LogoTimeline';
 import { siteConfig } from '@/config/site'; 
 
+export const revalidate = 604800; // 页面每周重新生成一次
+
 type Props = {
   params: Promise<{ 
     slug: string[]; 
@@ -55,8 +57,6 @@ export async function generateMetadata({ params }: Omit<Props, 'children'>, pare
     },
   };
 }
-
-export const revalidate = 86400; // 页面每天重新生成一次
 
 export default async function LogoDetailPage({ params }: Props) {
   const { locale, slug } = await params;

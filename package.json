@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@mapbox/mapbox-gl-language": "^1.0.1",
-    "@netlify/functions": "^4.2.1",
     "@portabletext/react": "^3.2.1",
     "@sanity/client": "^7.8.2",
     "@sanity/image-url": "^1.1.0",

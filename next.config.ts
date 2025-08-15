@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from 'next-intl/plugin';
+import { setupDevPlatform } from '@cloudflare/next-on-pages/next-dev';
 
 const nextConfig: NextConfig = {
   productionBrowserSourceMaps: false,
@@ -19,33 +20,11 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      // 优化客户端的打包策略
-      config.optimization.splitChunks = {
-        ...config.optimization.splitChunks,
-        // 将大的库强制拆分到单独的文件中
-        cacheGroups: {
-          ...config.optimization.splitChunks.cacheGroups,
-          mapboxgl: {
-            test: /[\\/]node_modules[\\/](mapbox-gl|@mapbox)[\\/]/,
-            name: 'mapboxgl',
-            chunks: 'all',
-            priority: 10,
-          },
-          supabase: {
-            test: /[\\/]node_modules[\\/]@supabase[\\/]/,
-            name: 'supabase',
-            chunks: 'all',
-            priority: 10,
-          },
-        },
-      };
-    }
-
-    return config;
-  },
 };
+
+ if (process.env.NODE_ENV === 'development') {
+   await setupDevPlatform();
+ }
 
 // export default nextConfig;
 const withNextIntl = createNextIntlPlugin();

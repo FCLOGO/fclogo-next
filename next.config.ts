@@ -19,6 +19,32 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      // 优化客户端的打包策略
+      config.optimization.splitChunks = {
+        ...config.optimization.splitChunks,
+        // 将大的库强制拆分到单独的文件中
+        cacheGroups: {
+          ...config.optimization.splitChunks.cacheGroups,
+          mapboxgl: {
+            test: /[\\/]node_modules[\\/](mapbox-gl|@mapbox)[\\/]/,
+            name: 'mapboxgl',
+            chunks: 'all',
+            priority: 10,
+          },
+          supabase: {
+            test: /[\\/]node_modules[\\/]@supabase[\\/]/,
+            name: 'supabase',
+            chunks: 'all',
+            priority: 10,
+          },
+        },
+      };
+    }
+
+    return config;
+  },
 };
 
 // export default nextConfig;

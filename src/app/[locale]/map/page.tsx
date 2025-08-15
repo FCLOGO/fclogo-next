@@ -1,5 +1,5 @@
 import { client } from '@/lib/sanity.client';
-// import MapContainer from '@/components/MapContainer';
+import MapContainer from '@/components/MapContainer';
 import type { MapQueryResult, CountryStat, ClubDataMap } from '@/types';
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
@@ -114,12 +114,11 @@ export default async function LogoMapPage() {
 
   return (
     <main className="w-full m-auto p-6 flex flex-grow flex-col flex-nowrap items-start h-[calc(100vh - 4rem)] min-h-150">
-      {/* <MapComponent 
+      <MapContainer 
         geojsonData={geojsonData} 
         countryStats={countryStats} 
         clubDataMap={clubDataMap} 
-      /> */}
-      <h1>MAP PAGE</h1>
+      />
     </main>
   );
 }

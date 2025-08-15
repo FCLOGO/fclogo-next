@@ -17,7 +17,7 @@
 | **UI 组件库**      | [daisyUI](https://daisyui.com/)                                    | v5+               | 基于 Tailwind CSS 的 UI 组件库。                                    |
 | **内容管理 (CMS)** | [Sanity.io](https://www.sanity.io/)                                | v3+               | 作为 Headless CMS，存储所有核心内容数据。                           |
 | **图片存储**       | [Cloudflare R2](https://www.cloudflare.com/developer-platform/r2/) | -                 | 对象存储，用于存放所有徽标的 PNG/SVG 原文件。                       |
-| **部署平台**       | [Netlify](https://www.netlify.com/)                                | -                 | 托管和部署 Next.js 前端应用。                                       |
+| **部署平台**       | [Cloudflare Pages](https://www.cloudflare.com/developer-platform/products/pages/)                                | -                 | 托管和部署 Next.js 前端应用。                                       |
 | **搜索服务**       | [Supabase (PostgreSQL)](https://supabase.com/)                     | -                 | 提供基于 `pg_trgm` 的全文搜索索引和 RPC 函数。                      |
 | **下载计数**       | [Supabase (PostgreSQL)](https://supabase.com/)                     | -                 | 提供原子性的下载计数功能。                                          |
 | **数据同步**       | [Cloudflare Workers](https://workers.cloudflare.com/)              | -                 | 作为独立的 Webhook 接收器，实现 Sanity 到 Supabase 的数据自动同步。 |

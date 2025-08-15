@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: process.env.NEXT_PUBLIC_CLOUDFLARE_R2_HOSTNAME!, 
+        hostname: 'assets.fclogo.top', 
         port: '',
         pathname: '/**', // 允许优化来自 R2 的所有图片
       },

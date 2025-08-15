@@ -7,7 +7,8 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { siteConfig } from '@/config/site';
 
-export const revalidate = false; 
+export const runtime = "edge";
+export const revalidate = 604800; 
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;

@@ -9,7 +9,8 @@ import { Sparkles, PartyPopper } from 'lucide-react';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site'; 
 
-export const revalidate = false; 
+export const runtime = "edge";
+export const revalidate = 604800; 
 
 type Props = {
   params: Promise<{ locale: string }>;

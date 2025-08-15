@@ -1,11 +1,17 @@
 import { client } from '@/lib/sanity.client';
-import MapContainer from '@/components/MapContainer';
+// import MapContainer from '@/components/MapContainer';
 import type { MapQueryResult, CountryStat, ClubDataMap } from '@/types';
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site'; 
+import dynamic from 'next/dynamic';
 
 export const revalidate = 604800; // 页面每周重新生成一次
+
+const MapComponent = dynamic(() => import('@/components/MapContainer'), {
+  ssr: false,
+  loading: () => <p>Loading map...</p> // (可选) 添加一个加载状态
+});
 
 async function getMapData(): Promise<MapQueryResult[]> {
   const query = `*[_type == "club" && defined(location)]{
@@ -114,7 +120,7 @@ export default async function LogoMapPage() {
 
   return (
     <main className="w-full m-auto p-6 flex flex-grow flex-col flex-nowrap items-start h-[calc(100vh - 4rem)] min-h-150">
-      <MapContainer 
+      <MapComponent 
         geojsonData={geojsonData} 
         countryStats={countryStats} 
         clubDataMap={clubDataMap} 

@@ -4,6 +4,7 @@ import LogoGrid from '@/components/LogoGrid';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site'; 
 
+export const runtime = 'edge';
 export const revalidate = 86400
 
 export async function generateMetadata(): Promise<Metadata> {

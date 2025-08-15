@@ -7,6 +7,7 @@ import PackGallery from '@/components/PackGallery';
 import PackSidebar from '@/components/PackSidebar';
 import { siteConfig } from '@/config/site'; 
 
+export const runtime = 'edge';
 export const revalidate = 604800; // 页面每周重新生成一次
 
 type Props = {

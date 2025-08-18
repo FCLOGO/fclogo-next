@@ -28,6 +28,7 @@ async function getLatestLogos(): Promise<LogoCardQueryResult[]> {
   try {
     const logos = await sanityFetch<LogoCardQueryResult[]>({
       query,
+      revalidate: 604800, // 缓存 1 周
       tags: ['latest-logos'], 
     });
     return logos;

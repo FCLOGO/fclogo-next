@@ -22,6 +22,7 @@ async function getLatestPacks(): Promise<LatestPackQueryResult[]> {
   try {
     const packs = await sanityFetch<LatestPackQueryResult[]>({
       query,
+      revalidate: 604800, // 缓存 1 周
       tags: ['latest-packs'], // 为这个特定的查询打上标签
     });
     return packs;

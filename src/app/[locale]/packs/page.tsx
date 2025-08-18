@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site'; 
 
 export const runtime = "edge";
-export const revalidate = 86400
+export const revalidate = 604800; //页面每周生成一次
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations();

@@ -11,7 +11,7 @@ import LogoTimeline from '@/components/LogoTimeline';
 import { siteConfig } from '@/config/site'; 
 
 export const runtime = "edge";
-export const revalidate = 604800; // 页面每周重新生成一次
+export const revalidate = 15552000; // 页面每半年重新生成一次
 
 type Props = {
   params: Promise<{ 

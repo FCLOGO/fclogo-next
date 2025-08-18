@@ -1,6 +1,6 @@
 'use server'; 
 
-import { client } from '@/lib/sanity.client';
+import { sanityFetch } from '@/lib/sanity.client';
 import type { LatestPackQueryResult } from '@/types';
 
 const PAGE_SIZE = 20; // 每次加载的数量
@@ -23,10 +23,14 @@ export async function getPacksAction(page: number): Promise<LatestPackQueryResul
   }`;
   
   try {
-    const logos = await client.fetch(query);
-    return logos;
+    const packs = await sanityFetch<LatestPackQueryResult[]>({
+      query,
+      revalidate: 604800, // 同样缓存 1 小时
+      tags: ['packs-list'],
+    });
+    return packs; 
   } catch (error) {
-    console.error("Failed to fetch paginated logos:", error);
+    console.error("Failed to fetch paginated packs:", error); // 注意：错误信息应为 packs
     return [];
   }
 }

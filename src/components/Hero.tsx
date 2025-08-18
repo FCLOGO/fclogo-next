@@ -1,22 +1,10 @@
-import { client } from '@/lib/sanity.client';
+import { getTotalLogoCount } from '@/lib/sanity.queries'
 import { getTranslations } from 'next-intl/server';
 import SearchBox from './SearchBox';
 
-async function getTotalCount() {
-  // GROQ 查询，计算所有类型的徽标总数
-  const query = `count(*[_type == "logo"])`;
-  try {
-    const count = await client.fetch(query);
-    return count;
-  } catch (error) {
-    console.error("Failed to fetch total logo count:", error);
-    return 0;
-  }
-}
-
 export default async function Hero() {
   const t = await getTranslations('HomePage');
-  const totalCount = await getTotalCount();
+  const totalCount = await getTotalLogoCount();
   const formattedCount = new Intl.NumberFormat('en-US').format(totalCount);
 
   return (

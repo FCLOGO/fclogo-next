@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { client } from '@/lib/sanity.client';
+import { sanityFetch } from '@/lib/sanity.client';
 import { siteConfig } from '@/config/site';
 
 type LogoSitemapData = {
@@ -25,7 +25,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     pngUrl,
   }`;
   
-  const logos = await client.fetch<LogoSitemapData[]>(query);
+  // const logos = await client.fetch<LogoSitemapData[]>(query);
+  const logos = await sanityFetch<LogoSitemapData[]>({
+    query,
+    revalidate: 604800, // 缓存 1 周
+    tags: ['sitemap-logo'],
+  });
 
   const logoUrls = logos
     .filter(logo => logo.pngUrl) // 过滤掉没有预览图的徽标
@@ -44,11 +49,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         },
       }));
     });
-  
 
-  const packs = await client.fetch<Array<{ slug: { current: string }, _updatedAt: string }>>(`
-    *[_type == "logoPack"]{ slug, _updatedAt }
-  `);
+  const packs = await sanityFetch<Array<{ slug: { current: string }, _updatedAt: string }>>({
+    query: `*[_type == "logoPack"]{ slug, _updatedAt }`,
+    revalidate: 604800,
+    tags: ['sitemap-pack'],
+  });
+
 
   const packUrls = packs.flatMap(pack => {
     return LOCALES.map(locale => ({

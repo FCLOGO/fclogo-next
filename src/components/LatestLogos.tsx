@@ -1,4 +1,4 @@
-import { client } from '@/lib/sanity.client';
+import { sanityFetch } from '@/lib/sanity.client';
 import { Link } from '@/i18n/navigation';
 import { getLocale, getTranslations } from 'next-intl/server';
 import LogoCard from './LogoCard';
@@ -24,8 +24,13 @@ async function getLatestLogos(): Promise<LogoCardQueryResult[]> {
       title
     }
   }`;
+  
   try {
-    const logos = await client.fetch(query);
+    const logos = await sanityFetch<LogoCardQueryResult[]>({
+      query,
+      revalidate: 604800, // 缓存 1 周
+      tags: ['latest-logos'], 
+    });
     return logos;
   } catch (error) {
     console.error("Failed to fetch latest logos:", error);

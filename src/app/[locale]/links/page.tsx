@@ -1,4 +1,4 @@
-import { client } from '@/lib/sanity.client';
+import { sanityFetch } from '@/lib/sanity.client';
 import { LinkQueryResult } from '@/types';
 import Image from 'next/image';
 import { getOptimizedImage } from '@/lib/sanity.image';
@@ -49,8 +49,13 @@ async function getAllLinks(): Promise<LinkQueryResult[]> {
     logo,
     description
   }`;
+
   try {
-    const links = await client.fetch(query);
+    const links = await sanityFetch<LinkQueryResult[]>({
+      query,
+      revalidate: 604800, // 缓存 1 周
+      tags: ['links'], // 为这个特定的查询打上标签
+    });
     return links;
   } catch (error) {
     console.error("Failed to fetch links:", error);

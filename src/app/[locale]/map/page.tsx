@@ -1,4 +1,4 @@
-import { client } from '@/lib/sanity.client';
+import { sanityFetch } from '@/lib/sanity.client';
 import MapContainer from '@/components/MapContainer';
 import type { MapQueryResult, CountryStat, ClubDataMap } from '@/types';
 import { getTranslations } from 'next-intl/server';
@@ -29,7 +29,11 @@ async function getMapData(): Promise<MapQueryResult[]> {
     }
   }`;
   try {
-    const clubs = await client.fetch(query);
+    const clubs = await sanityFetch<MapQueryResult[]>({
+      query,
+      revalidate: 604800, // 缓存 1 周
+      tags: ['map-data'], // 为这个特定的查询打上标签
+      });
     return clubs;
   } catch (error) {
     console.error("Failed to fetch map data:", error);

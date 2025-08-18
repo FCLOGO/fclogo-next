@@ -157,6 +157,17 @@ export type FullPackQueryResult = {
   items: LogoCardQueryResult[];
 };
 
+export type FullPageQueryResult = {
+  _id: string;
+  title: InternationalizedString;
+  slug: { current: string };
+  enContent: PortableText;
+  zhContent: PortableText;
+  timeline: {
+    events: []
+  }
+}
+
 // 地图页面的 GROQ 查询结果类型
 export type MapQueryResult = {
   _id: string;

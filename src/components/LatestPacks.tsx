@@ -1,4 +1,4 @@
-import { client } from '@/lib/sanity.client';
+import { sanityFetch } from '@/lib/sanity.client';
 import { Link } from '@/i18n/navigation';
 import { getLocale, getTranslations } from 'next-intl/server';
 import PackCard from './PackCard';
@@ -18,11 +18,16 @@ async function getLatestPacks(): Promise<LatestPackQueryResult[]> {
       previewImage
     }
   }`;
+  
   try {
-    const Packs = await client.fetch(query);
-    return Packs;
+    const packs = await sanityFetch<LatestPackQueryResult[]>({
+      query,
+      revalidate: 604800, // 缓存 1 周
+      tags: ['latest-packs'], // 为这个特定的查询打上标签
+    });
+    return packs;
   } catch (error) {
-    console.error("Failed to fetch latest Packs:", error);
+    console.error("Failed to fetch latest packs:", error);
     return [];
   }
 }

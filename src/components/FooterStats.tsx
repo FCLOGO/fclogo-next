@@ -1,9 +1,16 @@
-import { client } from '@/lib/sanity.client';
+import { sanityFetch } from '@/lib/sanity.client';
 import { getTranslations } from 'next-intl/server';
 import LogoIcon from './_icons/Logo';
 import ClubIcon from './_icons/Club';
 import CompetitionIcon from './_icons/Competition';
 import NationIcon from './_icons/Nation';
+
+interface StatsQueryResult {
+  logoCount: number;
+  clubCount: number;
+  compCount: number;
+  nationCount: number;
+}
 
 async function getSiteStats() {
   // 使用一个高效的 GROQ 查询，一次性获取所有统计数据
@@ -14,12 +21,15 @@ async function getSiteStats() {
     "nationCount": count(*[_type == "nation"]),
   }`;
   try {
-    const stats = await client.fetch(query);
+    const stats = await sanityFetch<StatsQueryResult>({
+      query,
+      revalidate: 604800, // 缓存 1 周
+      tags: ['footer-stats'], // 为这个特定的查询打上标签
+    });
     return stats;
   } catch (error) {
-    console.error("Failed to fetch site stats:", error);
-    // 在出错时返回一个默认值，防止页面崩溃
-    return { logoCount: 0, clubCount: 0, compCount: 0, nationCount: 0 };
+    console.error("Failed to fetch total logo stats:", error);
+    return { logoCount: 0, clubCount: 0, compCount: 0, nationCount: 0 }; // 出错时优雅地返回 0
   }
 }
 

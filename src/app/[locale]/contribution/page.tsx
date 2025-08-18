@@ -1,4 +1,5 @@
-import { client } from '@/lib/sanity.client';
+import { sanityFetch } from '@/lib/sanity.client';
+import { getTotalLogoCount } from '@/lib/sanity.queries'
 import { getTranslations } from 'next-intl/server';
 import PageHero from '@/components/PageHero';
 import ContributorCard from '@/components/ContributorCard';
@@ -51,22 +52,17 @@ async function getAllContributors(): Promise<contributorQueryResult[]> {
       slug
     }
   } | order(contributionCount desc)`;
+   
   try {
-    const contributors = await client.fetch(query);
-    return contributors;
+    const contributors = await sanityFetch<contributorQueryResult[]>({
+      query,
+      revalidate: 604800, // 同样缓存 1 周
+      tags: ['contributors'],
+    });
+    return contributors; 
   } catch (error) {
-    console.error("Failed to fetch contributors:", error);
+    console.error("Failed to fetch paginated contributors:", error); // 注意：错误信息应为 packs
     return [];
-  }
-}
-
-async function getTotalLogoCount(): Promise<number> {
-  try {
-    const count = await client.fetch(`count(*[_type == "logo"])`);
-    return count;
-  } catch (error) {
-    console.error("Failed to fetch total logo count:", error);
-    return 0;
   }
 }
 

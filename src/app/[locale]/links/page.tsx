@@ -53,7 +53,7 @@ async function getAllLinks(): Promise<LinkQueryResult[]> {
   try {
     const links = await sanityFetch<LinkQueryResult[]>({
       query,
-      revalidate: 604800, // 缓存 1 周
+      // revalidate: 604800, // 缓存 1 周
       tags: ['links'], // 为这个特定的查询打上标签
     });
     return links;

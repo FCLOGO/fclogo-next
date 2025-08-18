@@ -8,7 +8,7 @@ import PackSidebar from '@/components/PackSidebar';
 import { siteConfig } from '@/config/site'; 
 
 export const runtime = "edge";
-export const revalidate = 15552000; // 页面每半年重新生成一次
+export const revalidate = 2592000; // 缓存时间 30 天
 
 type Props = {
   params: Promise<{ 

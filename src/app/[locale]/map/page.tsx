@@ -31,7 +31,7 @@ async function getMapData(): Promise<MapQueryResult[]> {
   try {
     const clubs = await sanityFetch<MapQueryResult[]>({
       query,
-      revalidate: 604800, // 缓存 1 周
+      // revalidate: 604800, // 缓存 1 周
       tags: ['map-data'], // 为这个特定的查询打上标签
       });
     return clubs;

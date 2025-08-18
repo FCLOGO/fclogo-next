@@ -56,7 +56,7 @@ async function getAllContributors(): Promise<contributorQueryResult[]> {
   try {
     const contributors = await sanityFetch<contributorQueryResult[]>({
       query,
-      revalidate: 604800, // 同样缓存 1 周
+      // revalidate: 604800, // 同样缓存 1 周
       tags: ['contributors'],
     });
     return contributors; 

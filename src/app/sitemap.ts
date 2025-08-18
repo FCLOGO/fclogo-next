@@ -28,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // const logos = await client.fetch<LogoSitemapData[]>(query);
   const logos = await sanityFetch<LogoSitemapData[]>({
     query,
-    revalidate: 604800, // 缓存 1 周
+    // revalidate: 604800, // 缓存 1 周
     tags: ['sitemap-logo'],
   });
 
@@ -52,7 +52,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const packs = await sanityFetch<Array<{ slug: { current: string }, _updatedAt: string }>>({
     query: `*[_type == "logoPack"]{ slug, _updatedAt }`,
-    revalidate: 604800,
+    // revalidate: 604800,
     tags: ['sitemap-pack'],
   });
 

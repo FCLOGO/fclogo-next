@@ -181,7 +181,7 @@ export async function getTotalLogoCount(): Promise<number> {
   try {
     const count = await sanityFetch<number>({
       query,
-      revalidate: 604800, // 缓存 1 周
+      // revalidate: 604800, // 缓存 1 周
       tags: ['logo-count'], 
     });
     return count;

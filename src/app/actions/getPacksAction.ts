@@ -25,7 +25,7 @@ export async function getPacksAction(page: number): Promise<LatestPackQueryResul
   try {
     const packs = await sanityFetch<LatestPackQueryResult[]>({
       query,
-      revalidate: 604800, // 同样缓存 1 小时
+      // revalidate: 604800, // 同样缓存 1 小时
       tags: ['packs-list'],
     });
     return packs; 

@@ -12,7 +12,7 @@ export const client = createClient(config);
 export async function sanityFetch<QueryResponse>({
   query,
   params = {},
-  revalidate = 2592000, // 默认缓存 30 天
+  // revalidate = 2592000, // 默认缓存 30 天
   tags = [],
 }: {
   query: string
@@ -24,9 +24,7 @@ export async function sanityFetch<QueryResponse>({
     // 在 Next.js 15 中，必须明确设置 cache 策略
     cache: 'force-cache',
     next: {
-      // 如果有 tags，则依赖 tag-based revalidation
-      // 如果没有，则使用 time-based revalidation
-      revalidate: tags.length ? false : revalidate,
+      // revalidate: tags.length ? false : revalidate,
       tags, // 将 tags 传递给 Next.js 的 fetch
     },
   })

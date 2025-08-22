@@ -2,6 +2,7 @@ import { revalidateTag } from 'next/cache'
 import { type NextRequest, NextResponse } from 'next/server'
 import { parseBody } from 'next-sanity/webhook'
 
+export const runtime = 'edge';
 // 从环境变量中获取 Sanity Webhook Secret
 const SANITY_WEBHOOK_SECRET = process.env.SANITY_WEBHOOK_SECRET!
 

@@ -19,9 +19,6 @@ export async function sanityFetch<QueryResponse>({
   tags?: string[]
 }): Promise<QueryResponse> {
   return client.fetch<QueryResponse>(query, params, {
-    // cache: 'force-cache',
-    next: {
-      tags, // 将 tags 传递给 Next.js 的 fetch
-    },
+    next: { tags },
   })
 }

@@ -10,7 +10,7 @@ type PackGalleryProps = {
 function PackItem({ logo }: { logo: LogoCardQueryResult }) {
   return (
     <Link 
-      href={`/${logo.slug.current}`} 
+      href={logo.slug.current}
       className="aspect-square transition-transform duration-300 hover:-translate-y-1 group"
     >
       <SuspenseImage

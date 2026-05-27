@@ -12,6 +12,7 @@ import FloatingActionGroup from "@/components/FloatingActionGroup";
 import SearchModal from '@/components/SearchModal';
 import { siteConfig } from '@/config/site'; 
 import { Adsense } from '@/components/Adsense';
+import AdUnlockModal from '@/components/AdUnlockModal';
 
 const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
@@ -82,6 +83,7 @@ export default async function LocaleLayout({
             <DrawerMenu />
           </div>
           <SearchModal />
+          <AdUnlockModal />
         </NextIntlClientProvider>
       </body>
     </html>

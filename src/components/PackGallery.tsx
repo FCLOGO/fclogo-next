@@ -27,8 +27,16 @@ function PackItem({ logo }: { logo: LogoCardQueryResult }) {
 }
 
 export default async function PackGallery({ items }: PackGalleryProps) {
+  const dotPatternStyle = {
+    backgroundImage: 'radial-gradient(color-mix(in oklab, currentColor 25%, transparent) 1.25px, transparent 1.25px)',
+    backgroundSize: '24px 24px',
+  } as const;
+
   return (
-    <div className="w-full flex-grow h-full p-6 items-center justify-center relative mt-10">
+    <div
+      className="w-full flex-grow h-full p-6 items-center justify-center relative mt-10 text-base-content/60"
+      style={dotPatternStyle}
+    >
       <div className="w-full flex-grow grid items-center justify-items-center gap-6 grid-cols-[repeat(auto-fill,_minmax(160px,_1fr))] md:grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))]">
         {items.map((logo) => (
           <PackItem key={logo.slug.current} logo={logo} />

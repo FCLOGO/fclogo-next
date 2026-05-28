@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import DrawerMenu from "@/components/DrawerMenu";
 import FloatingActionGroup from "@/components/FloatingActionGroup";
 import SearchModal from '@/components/SearchModal';
+import RouteProgressBar from '@/components/RouteProgressBar';
 import { siteConfig } from '@/config/site'; 
 import { Adsense } from '@/components/Adsense';
 
@@ -71,6 +72,7 @@ export default async function LocaleLayout({
       <head><Adsense /></head>
       <body className={`${jetBrainsMono.variable} antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <RouteProgressBar />
           <div className="drawer">
             <input id="main-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col bg-base-300 min-h-screen">

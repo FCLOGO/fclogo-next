@@ -81,7 +81,7 @@ export default async function LogoCategorySidebar({
   };
 
   return (
-    <aside className="relative w-full rounded-lg shrink-0 lg:w-90 lg:sticky lg:top-24 self-start overflow-hidden">
+    <aside className="relative w-full rounded-lg shrink-0 lg:w-[23rem] lg:sticky lg:top-24 self-start overflow-hidden">
       <div className="flex max-h-[calc(100vh-8rem)] min-h-0 flex-col overflow-hidden rounded-lg bg-base-100 shadow">
         <div className='z-10 flex flex-col justify-center p-6 gap-3 border-none border-neutral/20 lg:border-b lg:border-dashed relative'>
           <LogoIcon className='w-12 h-12 stroke-[24] text-success flex-none' />

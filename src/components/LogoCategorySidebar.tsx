@@ -3,7 +3,7 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { getOptimizedImage } from '@/lib/sanity.image';
 import { localize } from '@/lib/utils';
-import { getLogoCategorySidebarData } from '@/lib/logoCategory.queries';
+import type { LogoCategorySidebarData } from '@/lib/logoCategory.queries';
 import { subjectTypeKeys, type SubjectTypeKey } from '@/config/logoCategories';
 import type { Image as SanityImage } from '@/types';
 import NationPickerModal from './NationPickerModal';
@@ -20,6 +20,7 @@ type Props = {
   basePath?: string;
   selectedNationCode?: string;
   selectedSubjectType?: SubjectTypeKey;
+  sidebarData: LogoCategorySidebarData;
   icon?: {
     type: 'generic' | 'nation' | 'subject';
     flag?: SanityImage;
@@ -42,14 +43,12 @@ export default async function LogoCategorySidebar({
   description,
   basePath = '/logos',
   selectedNationCode,
-  selectedSubjectType
+  selectedSubjectType,
+  sidebarData
 }: Props) {
   const t = await getTranslations('CategorySidebar');
   const tDetail = await getTranslations('DetailPage');
-  const { nations, allNations, subjectTypes } = await getLogoCategorySidebarData({
-    nationCode: selectedNationCode,
-    subjectType: selectedSubjectType,
-  });
+  const { nations, allNations, subjectTypes } = sidebarData;
 
   const subjectTypeCountMap = new Map(subjectTypes.map((item) => [item.key, item.count]));
   const headerTitle = title ?? t('title');
@@ -170,21 +169,22 @@ export default async function LogoCategorySidebar({
                         : 'text-base-content/75 hover:bg-base-200 hover:text-base-content'
                     }`}
                   >
-                    <span className="flex shrink-0 items-center justify-center overflow-hidden">
-                      {nation.flagRectangle ? (
-                        <Image
-                          src={getOptimizedImage(nation.flagRectangle, 24)}
-                          alt={nationName}
-                          width={24}
-                          height={24}
-                          className="h-full w-full object-cover"
-                        />
-                      ) : (
-                        <span className="text-[10px] font-mono text-base-content/40">
-                          {nation.code.slice(0, 2).toUpperCase()}
-                        </span>
-                      )}
-                    </span>
+                      <span className="relative flex h-6 w-6 shrink-0 items-center justify-center overflow-hidden">
+                        <span className="absolute inset-0 animate-pulse bg-base-200/70" />
+                        {nation.flagRectangle ? (
+                          <Image
+                            src={getOptimizedImage(nation.flagRectangle, 24)}
+                            alt={nationName}
+                            width={24}
+                            height={24}
+                            className="relative z-10 h-full w-full object-cover"
+                          />
+                        ) : (
+                          <span className="relative z-10 text-[10px] font-mono text-base-content/40">
+                            {nation.code.slice(0, 2).toUpperCase()}
+                          </span>
+                        )}
+                      </span>
                     <span className="min-w-0 flex-1 truncate">{nationName}</span>
                     <span className="ml-auto shrink-0 rounded-full bg-neutral/5 px-2 py-0.5 text-xs font-mono text-base-content/70">
                       {nation.count}

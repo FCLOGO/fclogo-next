@@ -19,6 +19,8 @@ export default function LogoDetailPage({ logo, locale}: Props) {
   const nationName = logo.subject.nation?.name ? localize(logo.subject.nation.name, locale) : '';
   const hasNation = Boolean(logo.subject.nation?.name);
   const subjectType = t(logo.subject._type).trim();
+  const nationHref = logo.subject.nation?.code ? `/logos?nation=${logo.subject.nation.code}` : '/logos';
+  const typeHref = `/logos?type=${logo.subject._type}`;
   return (
     <header className='flex flex-col gap-2 px-6 pt-6'>
       <nav aria-label="Breadcrumb" className="mb-2 text-xs uppercase">
@@ -33,14 +35,14 @@ export default function LogoDetailPage({ logo, locale}: Props) {
           </li>
           {hasNation && (
             <li>
-              <Link href="/" className="transition-colors hover:text-success">
+              <Link href={nationHref} className="transition-colors hover:text-success">
                 {nationName}
               </Link>
             </li>
           )}
           {hasNation && <li aria-hidden="true" className="text-base-content/40">·</li>}
           <li>
-            <Link href="/" className="transition-colors hover:text-success">
+            <Link href={typeHref} className="transition-colors hover:text-success">
               {subjectType}
             </Link>
           </li>

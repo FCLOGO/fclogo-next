@@ -102,6 +102,7 @@ export type FullLogoQueryResult = {
       wikiURL?: string;
     };
     nation?: {
+      code: string;
       name: InternationalizedString;
       flagRectangle: Image;
     };

@@ -41,6 +41,7 @@ export async function getLogoBySlug(slug: string): Promise<FullLogoQueryResult |
         wikiURL
       },
       nation->{
+        code,
         name,
         flagRectangle
       }

@@ -7,9 +7,9 @@ import { LOGOS_PAGE_SIZE, type LogoListFilter } from '@/app/actions/getLogosActi
 import LogoCard from './LogoCard';
 import { useTranslations } from 'next-intl';
 import { Loader } from 'lucide-react';
-import AdUnit from './AdUnit';
+// import AdUnit from './AdUnit';
 
-const PAGINATION_THRESHOLD = 5; // 自动加载 5 次
+const PAGINATION_THRESHOLD = 2; // 自动加载 2 次
 
 interface LogoGridProps {
   initialLogos: LogoCardQueryResult[];
@@ -70,9 +70,9 @@ export default function LogoGrid({ initialLogos, locale, filter = {} }: LogoGrid
 
   return (
     <div className="w-full">
-      <div className="mb-8">
+      {/* <div className="mb-8">
         <AdUnit adSlot="1229678468" className='w-full text-center' /> 
-      </div>
+      </div> */}
       <div className="overflow-hidden grid justify-between gap-6 grid-cols-[repeat(auto-fill,_minmax(240px,_1fr))]">
         {logos.map((logo) => (
           <LogoCard key={logo.slug.current} logo={logo} locale={locale} />

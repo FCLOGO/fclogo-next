@@ -16,6 +16,12 @@ export type SubjectTypeCategory = {
   count: number;
 };
 
+export type LogoCategorySidebarData = {
+  nations: NationCategory[];
+  allNations: NationCategory[];
+  subjectTypes: SubjectTypeCategory[];
+};
+
 type SidebarFilter = Pick<LogoListFilter, 'nationCode' | 'subjectType'>;
 
 export async function getNationCategories(limit?: number, filter: SidebarFilter = {}): Promise<NationCategory[]> {
@@ -82,7 +88,7 @@ export async function getSubjectTypeCategories(filter: SidebarFilter = {}): Prom
   }
 }
 
-export async function getLogoCategorySidebarData(filter: SidebarFilter = {}) {
+export async function getLogoCategorySidebarData(filter: SidebarFilter = {}): Promise<LogoCategorySidebarData> {
   const [nations, allNations, subjectTypes] = await Promise.all([
     getNationCategories(20, { subjectType: filter.subjectType }),
     getNationCategories(undefined, { subjectType: filter.subjectType }),

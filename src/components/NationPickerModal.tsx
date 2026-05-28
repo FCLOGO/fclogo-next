@@ -16,7 +16,6 @@ type Props = {
   nations: NationCategory[];
   selectedNationCode?: string;
   selectedSubjectType?: SubjectTypeKey;
-  variant?: 'sidebar' | 'card';
 };
 
 export default function NationPickerModal({
@@ -97,17 +96,18 @@ export default function NationPickerModal({
                         : 'border-base-200 bg-base-100 hover:border-success hover:bg-success/5'
                     }`}
                   >
-                    <span className="flex shrink-0 items-center justify-center overflow-hidden">
+                    <span className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden">
+                      <span className="absolute inset-0 animate-pulse bg-base-200/70" />
                       {nation.flagRectangle ? (
                         <Image
                           src={getOptimizedImage(nation.flagRectangle, 40)}
                           alt={nationName}
                           width={40}
                           height={40}
-                          className="h-full w-full object-cover"
+                          className="relative z-10 h-full w-full object-cover"
                         />
                       ) : (
-                        <span className="text-[10px] font-mono text-base-content/40">
+                        <span className="relative z-10 text-[10px] font-mono text-base-content/40">
                           {nation.code.slice(0, 2).toUpperCase()}
                         </span>
                       )}

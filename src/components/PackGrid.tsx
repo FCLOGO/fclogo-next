@@ -6,9 +6,9 @@ import { getPacksAction } from '@/app/actions/getPacksAction';
 import PackCard from './PackCard';
 import { useTranslations } from 'next-intl';
 import { Loader } from 'lucide-react';
-import AdUnit from './AdUnit';
+// import AdUnit from './AdUnit';
 
-const PAGINATION_THRESHOLD = 4; // 自动加载 5 次
+const PAGINATION_THRESHOLD = 2; // 自动加载 2 次
 
 interface PackGridProps {
   initialPacks: LatestPackQueryResult[];
@@ -68,9 +68,9 @@ export default function PackGrid({ initialPacks, locale }: PackGridProps) {
 
   return (
     <div className="w-full">
-      <div className="mb-8">
+      {/* <div className="mb-8">
         <AdUnit adSlot="1229678468" className='w-full text-center' /> 
-      </div>
+      </div> */}
       <div className="overflow-hidden grid justify-between gap-6 grid-cols-[repeat(auto-fill,_minmax(240px,_1fr))]">
         {packs.map((pack) => (
           <PackCard key={pack.slug.current} pack={pack} locale={locale} />

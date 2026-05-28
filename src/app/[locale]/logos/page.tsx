@@ -6,6 +6,7 @@ import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site'; 
 import LogoCategorySidebar from '@/components/LogoCategorySidebar';
 import { subjectTypeKeys, type SubjectTypeKey } from '@/config/logoCategories';
+import { getLogoCategorySidebarData } from '@/lib/logoCategory.queries';
 
 export const runtime = "edge";
 export const revalidate = 604800; //页面每周生成一次
@@ -60,8 +61,10 @@ export default async function AllLogosPage({ searchParams }: PageProps) {
     subjectType: selectedSubjectType,
   };
 
-  // 只获取第一页 (page 0) 的数据作为初始数据
-  const initialLogos = await getLogosAction(0, filter);
+  const [initialLogos, sidebarData] = await Promise.all([
+    getLogosAction(0, filter),
+    getLogoCategorySidebarData(filter),
+  ]);
 
   return (
     <main className="container mx-auto px-6 py-10 flex-grow w-full">
@@ -70,6 +73,7 @@ export default async function AllLogosPage({ searchParams }: PageProps) {
           locale={locale}
           selectedNationCode={selectedNationCode}
           selectedSubjectType={selectedSubjectType}
+          sidebarData={sidebarData}
         />
 
         <section className="relative z-0 min-w-0">

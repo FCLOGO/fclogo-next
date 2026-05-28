@@ -17,8 +17,8 @@ export default async function LogoGallery({ logo, locale }: Props) {
   const t = await getTranslations('DetailPage');
   const subjectName = localize(logo.subject.name, locale);
   const dotPatternStyle = {
-    backgroundImage: `radial-gradient(${logo.isBgDark ? 'rgba(255,255,255,0.18)' : 'rgba(15,23,42,0.14)'} 1.25px, transparent 1.25px)`,
-    backgroundSize: '24px 16px',
+    backgroundImage: `radial-gradient(${logo.isBgDark ? 'rgba(255,255,255,0.16)' : 'rgba(15,23,42,0.16)'} 1.25px, transparent 1.25px)`,
+    backgroundSize: '24px 24px',
   } as const;
   return (
     <div

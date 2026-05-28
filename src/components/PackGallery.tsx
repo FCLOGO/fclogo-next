@@ -28,7 +28,7 @@ function PackItem({ logo }: { logo: LogoCardQueryResult }) {
 
 export default async function PackGallery({ items }: PackGalleryProps) {
   const dotPatternStyle = {
-    backgroundImage: 'radial-gradient(color-mix(in oklab, currentColor 25%, transparent) 1.25px, transparent 1.25px)',
+    backgroundImage: 'radial-gradient(rgba(15,23,42,0.16) 1.25px, transparent 1.25px)',
     backgroundSize: '24px 24px',
   } as const;
 

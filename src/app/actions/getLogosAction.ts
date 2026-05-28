@@ -2,14 +2,26 @@
 
 import { sanityFetch } from '@/lib/sanity.client';
 import type { LogoCardQueryResult } from '@/types';
+import { LOGOS_PAGE_SIZE, type LogoListFilter } from './getLogosAction.constants';
 
-const PAGE_SIZE = 20; // 每次加载的数量
+export async function getLogosAction(page: number, filter: LogoListFilter = {}): Promise<LogoCardQueryResult[]> {
+  const start = page * LOGOS_PAGE_SIZE;
+  const end = start + LOGOS_PAGE_SIZE;
 
-export async function getLogosAction(page: number): Promise<LogoCardQueryResult[]> {
-  const start = page * PAGE_SIZE;
-  const end = start + PAGE_SIZE;
+  const conditions = ['_type == "logo"'];
+  const params: Record<string, string> = {};
 
-  const query = `*[_type == "logo"] | order(coalesce(dateOriginal, _createdAt) desc) [${start}...${end}] {
+  if (filter.nationCode) {
+    conditions.push('subject->nation->code == $nationCode');
+    params.nationCode = filter.nationCode;
+  }
+
+  if (filter.subjectType) {
+    conditions.push('subject->_type == $subjectType');
+    params.subjectType = filter.subjectType;
+  }
+
+  const query = `*[${conditions.join(' && ')}] | order(coalesce(dateOriginal, _createdAt) desc) [${start}...${end}] {
     slug,
     version,
     isBgDark,
@@ -32,6 +44,7 @@ export async function getLogosAction(page: number): Promise<LogoCardQueryResult[
     // 列表页内容变化较快，我们可以设置一个较短的缓存时间，比如 1 小时
     const logos = await sanityFetch<LogoCardQueryResult[]>({
       query,
+      params,
       // revalidate: 604800, // 缓存 1 周
       tags: ['logos-list'], // 为所有列表页打上一个通用的标签
     });

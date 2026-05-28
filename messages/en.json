@@ -93,6 +93,26 @@
     "allLoaded": "You've reached the end!",
     "noData": "No logos found."
   },
+  "CategorySidebar": {
+    "title": "Category Navigation",
+    "subtitle": "Browse Categories",
+    "eyebrow": "Category Browsing",
+    "pageDescription": "Browse all logos by nation/region and subject type.",
+    "allLogos": "All Logos",
+    "allNations": "All",
+    "nations": "Nations / Regions",
+    "subjectTypes": "Types"
+  },
+  "CategoriesPage": {
+    "pageTitle": "Logo Categories",
+    "pageDescription": "Browse all logos by nation/region and subject type.",
+    "nationsTitle": "Nations / Regions",
+    "nationsDescription": "Browse logos by nation or region.",
+    "nationsTitleSuffix": "Related Logos",
+    "nationsPageDescription": "Browse every logo from {name}.",
+    "close": "Close",
+    "noData": "No data available."
+  },
   "MapPage": {
     "pageTitle": "Logo Map",
     "pageDescription": "Collection of football club vector logos. All logos work with SVG and PNG. No account and unlimited downloads for free.",

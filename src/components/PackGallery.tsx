@@ -2,6 +2,7 @@ import { getOptimizedImage } from '@/lib/sanity.image';
 import type { FullPackQueryResult, LogoCardQueryResult } from '@/types';
 import SuspenseImage from './SuspenseImage';
 import { Link } from '@/i18n/navigation';
+import { normalizeLogoPath } from '@/lib/utils';
 
 type PackGalleryProps = {
   items: FullPackQueryResult['items'];
@@ -10,7 +11,7 @@ type PackGalleryProps = {
 function PackItem({ logo }: { logo: LogoCardQueryResult }) {
   return (
     <Link 
-      href={logo.slug.current}
+      href={normalizeLogoPath(logo.slug.current)}
       className="aspect-square transition-transform duration-300 hover:-translate-y-1 group"
     >
       <SuspenseImage

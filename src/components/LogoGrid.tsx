@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useTransition, useCallback } from 'react';
 import type { LogoCardQueryResult } from '@/types';
 import { getLogosAction } from '@/app/actions/getLogosAction';
+import { LOGOS_PAGE_SIZE, type LogoListFilter } from '@/app/actions/getLogosAction.constants';
 import LogoCard from './LogoCard';
 import { useTranslations } from 'next-intl';
 import { Loader } from 'lucide-react';
@@ -13,13 +14,14 @@ const PAGINATION_THRESHOLD = 5; // 自动加载 5 次
 interface LogoGridProps {
   initialLogos: LogoCardQueryResult[];
   locale: string;
+  filter?: LogoListFilter;
 }
 
-export default function LogoGrid({ initialLogos, locale }: LogoGridProps) {
+export default function LogoGrid({ initialLogos, locale, filter = {} }: LogoGridProps) {
   const t = useTranslations('LogosPage');
   const [logos, setLogos] = useState(initialLogos);
   const [page, setPage] = useState(1); // 我们已经加载了第0页，所以下一页是1
-  const [hasMore, setHasMore] = useState(initialLogos.length === 20);
+  const [hasMore, setHasMore] = useState(initialLogos.length === LOGOS_PAGE_SIZE);
   const [isPending, startTransition] = useTransition();
 
   const loadMoreRef = useRef<HTMLDivElement>(null);
@@ -28,17 +30,17 @@ export default function LogoGrid({ initialLogos, locale }: LogoGridProps) {
     // 使用 isPending 代替 isLoading
     if (isPending || !hasMore) return;
 
-    const newLogos = await getLogosAction(page);
+    const newLogos = await getLogosAction(page, filter);
     
     if (newLogos.length > 0) {
       setPage(prev => prev + 1);
       setLogos(prev => [...prev, ...newLogos]);
     }
     
-    if (newLogos.length < 20) {
+    if (newLogos.length < LOGOS_PAGE_SIZE) {
       setHasMore(false);
     }
-  }, [page, hasMore, isPending]);
+  }, [page, hasMore, isPending, filter]);
 
   // 使用 Intersection Observer 监听滚动
   useEffect(() => {

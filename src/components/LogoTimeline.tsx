@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import SuspenseImage from './SuspenseImage';
 import { Link } from '@/i18n/navigation';
 import { BadgeCheck } from 'lucide-react';
+import { normalizeLogoPath } from '@/lib/utils';
 
 type Props = {
   history: FullLogoQueryResult['logoHistory'];
@@ -29,7 +30,7 @@ export default async function LogoTimeline({ history, currentLogoVersion }: Prop
             'bg-base-100 shadow-box rounded-lg',
             {'border-b-3 border-b-success': logo.version === currentLogoVersion}
           )}>
-            <Link href={logo.slug.current} className='flex flex-col items-center'>
+            <Link href={normalizeLogoPath(logo.slug.current)} className='flex flex-col items-center'>
               <SuspenseImage
                 src={getOptimizedImage(logo.previewImage, 80)}
                 placeholderType="logo"

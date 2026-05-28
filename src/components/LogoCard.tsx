@@ -1,4 +1,4 @@
-import { localize } from '@/lib/utils';
+import { localize, normalizeLogoPath } from '@/lib/utils';
 import { getOptimizedImage } from '@/lib/sanity.image';
 import Image from 'next/image';
 import SuspenseImage from './SuspenseImage';
@@ -34,7 +34,7 @@ export default function LogoCard({ logo, locale }: LogoCardProps) {
   const styleName = localize(logo.style.title, locale);
 
   return (
-    <Link href={logo.slug.current} className="card bg-base-100 shadow-box group overflow-hidden border border-base-200 hover:border-gray-300">
+    <Link href={normalizeLogoPath(logo.slug.current)} className="card bg-base-100 shadow-box group overflow-hidden border border-base-200 hover:border-gray-300">
       <figure className={`relative aspect-square p-[20%] ${logo.isBgDark ? 'bg-neutral' : 'bg-base-100'}`}>
         <SuspenseImage
           src={getOptimizedImage(logo.previewImage, 200)}

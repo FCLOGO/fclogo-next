@@ -6,7 +6,7 @@ import { getTranslations } from 'next-intl/server';
 // import { Link as NavLink } from '@/i18n/navigation';
 import NavLink from './NavLink';
 import { Info } from 'lucide-react';
-import { localize } from '@/lib/utils';
+import { localize, normalizeLogoPath } from '@/lib/utils';
 
 type Props = {
   logo: FullLogoQueryResult;
@@ -44,7 +44,7 @@ export default async function LogoGallery({ logo, locale }: Props) {
             {logo.otherStyles.map((styleLogo) =>(
               <NavLink 
                 key={styleLogo._id}
-                href={`${styleLogo.slug.current}`}
+                href={normalizeLogoPath(styleLogo.slug.current)}
                 className={`rounded border border-gray-300 flex-shrink-0 ${styleLogo.isBgDark ? 'bg-neutral' : 'bg-base-300'}`}
                 activeClassName="border-b-3 border-b-success"
                 exact

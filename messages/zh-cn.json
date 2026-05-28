@@ -93,6 +93,25 @@
     "allLoaded": "已全部加载完毕！",
     "noData": "暂无徽标数据。"
   },
+  "CategorySidebar": {
+    "title": "类别导航",
+    "subtitle": "浏览分类",
+    "pageDescription": "按国家/地区和主体类型浏览所有徽标。",
+    "allLogos": "所有徽标",
+    "allNations": "全部",
+    "nations": "国家/地区",
+    "subjectTypes": "类型"
+  },
+  "CategoriesPage": {
+    "pageTitle": "徽标分类",
+    "pageDescription": "按国家/地区和主体类型浏览所有徽标。",
+    "nationsTitle": "国家/地区",
+    "nationsDescription": "按国家或地区浏览相关徽标。",
+    "nationsTitleSuffix": "相关徽标",
+    "nationsPageDescription": "浏览 {name} 的全部徽标。",
+    "close": "关闭",
+    "noData": "暂无数据。"
+  },
   "MapPage": {
     "pageTitle": "徽标地图",
     "pageDescription": "足球俱乐部矢量徽标收集网站。所有徽标均支持SVG和PNG格式。无需账户，无限制免费下载。",

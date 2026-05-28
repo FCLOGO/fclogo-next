@@ -1,11 +1,21 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getLogosAction } from '@/app/actions/getLogosAction';
+import { type LogoListFilter } from '@/app/actions/getLogosAction.constants';
 import LogoGrid from '@/components/LogoGrid';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site'; 
+import LogoCategorySidebar from '@/components/LogoCategorySidebar';
+import { subjectTypeKeys, type SubjectTypeKey } from '@/config/logoCategories';
 
 export const runtime = "edge";
 export const revalidate = 604800; //页面每周生成一次
+
+type PageProps = {
+  searchParams: Promise<{
+    nation?: string;
+    type?: string;
+  }>;
+};
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations();
@@ -37,20 +47,44 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 
-export default async function AllLogosPage() {
+export default async function AllLogosPage({ searchParams }: PageProps) {
   const t = await getTranslations('LogosPage');
   const locale = await getLocale();
+  const { nation, type } = await searchParams;
+  const selectedNationCode = nation?.trim() || undefined;
+  const selectedSubjectType = subjectTypeKeys.includes(type as SubjectTypeKey)
+    ? (type as SubjectTypeKey)
+    : undefined;
+  const filter: LogoListFilter = {
+    nationCode: selectedNationCode,
+    subjectType: selectedSubjectType,
+  };
 
   // 只获取第一页 (page 0) 的数据作为初始数据
-  const initialLogos = await getLogosAction(0);
+  const initialLogos = await getLogosAction(0, filter);
 
   return (
-    <main className="container mx-auto px-6 py-10 flex-grow flex flex-col">
-      {initialLogos.length > 0 ? (
-        <LogoGrid initialLogos={initialLogos} locale={locale} />
-      ) : (
-        <p className="text-center text-base-content/60">{t('noData')}</p>
-      )}
+    <main className="container mx-auto px-6 py-10 flex-grow w-full">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[23rem_minmax(0,1fr)]">
+        <LogoCategorySidebar
+          locale={locale}
+          selectedNationCode={selectedNationCode}
+          selectedSubjectType={selectedSubjectType}
+        />
+
+        <section className="relative z-0 min-w-0">
+          {initialLogos.length > 0 ? (
+            <LogoGrid
+              key={`${selectedNationCode ?? 'all'}-${selectedSubjectType ?? 'all'}`}
+              initialLogos={initialLogos}
+              locale={locale}
+              filter={filter}
+            />
+          ) : (
+            <p className="text-center text-base-content/60">{t('noData')}</p>
+          )}
+        </section>
+      </div>
     </main>
   );
 }

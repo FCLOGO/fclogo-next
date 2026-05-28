@@ -6,6 +6,7 @@ import { getOptimizedImage } from '@/lib/sanity.image';
 import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { SquareArrowOutUpRight, User } from 'lucide-react';
+import { normalizeLogoPath } from '@/lib/utils';
 
 type Props = {
   contributor: contributorQueryResult;
@@ -63,7 +64,7 @@ export default function ContributorCard({ contributor, totalLogoCount }: Props) 
         {contributor.recentContributions.length > 0 ? (
           <div className="grid grid-cols-[repeat(auto-fill,_minmax(48px,_1fr))] justify-between items-center w-full gap-2">
             {contributor.recentContributions.map(logo => (
-              <Link key={logo._id} href={logo.slug.current} className="bg-base-200 rounded p-2 hover:bg-base-300">
+              <Link key={logo._id} href={normalizeLogoPath(logo.slug.current)} className="bg-base-200 rounded p-2 hover:bg-base-300">
                 <SuspenseImage
                   src={getOptimizedImage(logo.previewImage, 48)}
                   placeholderType="logo"

@@ -12,3 +12,7 @@ export function localize(
   const fallback = field.find(item => item._key === fallbackLocale);
   return translation?.value || fallback?.value || '';
 }
+
+export function normalizeLogoPath(path: string): string {
+  return path.startsWith('/') ? path : `/${path}`;
+}

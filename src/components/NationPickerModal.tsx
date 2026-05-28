@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useRef } from 'react';
-import { ArrowUpRight, X } from 'lucide-react';
+import { ListCollapse, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { getOptimizedImage } from '@/lib/sanity.image';
@@ -53,10 +53,10 @@ export default function NationPickerModal({
       <button
         type="button"
         onClick={openModal}
-        className="text-sm font-semibold text-success hover:underline underline-offset-4 cursor-pointer flex items-center"
+        className="text-sm font-semibold text-success hover:underline underline-offset-4 cursor-pointer flex items-center gap-1"
       >
         {tSidebar('allNations')}
-        <ArrowUpRight className="h-5 w-5 text-success" />
+        <ListCollapse className="h-4 w-4 text-success" />
       </button>
 
       <dialog ref={modalRef} className="modal">

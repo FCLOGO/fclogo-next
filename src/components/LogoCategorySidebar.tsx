@@ -12,6 +12,8 @@ import LogoIcon from './_icons/Logo';
 import ClubIcon from './_icons/Club';
 import CompetitionIcon from './_icons/Competition';
 import NationIcon from './_icons/Nation';
+import AssociationIcon from './_icons/Association';
+import ConfederationIcon from './_icons/Confederation';
 
 type Props = {
   locale: string;
@@ -33,8 +35,8 @@ const subjectTypeMeta = {
   club: { icon: ClubIcon, labelKey: 'club' },
   comp: { icon: CompetitionIcon, labelKey: 'comp' },
   team: { icon: NationIcon, labelKey: 'team' },
-  assn: { icon: LogoIcon, labelKey: 'assn' },
-  conf: { icon: LogoIcon, labelKey: 'conf' },
+  assn: { icon: AssociationIcon, labelKey: 'assn' },
+  conf: { icon: ConfederationIcon, labelKey: 'conf' },
 } as const satisfies Record<SubjectTypeKey, { icon: typeof LogoIcon; labelKey: string }>;
 
 export default async function LogoCategorySidebar({

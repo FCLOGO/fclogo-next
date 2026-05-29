@@ -37,6 +37,13 @@ export type LatestPackQueryResult = {
   sourceLogo: {
     previewImage: Image;
   };
+  sourceSubject?: {
+    nation?: {
+      code: string;
+      name: InternationalizedString;
+      flagRectangle?: Image;
+    };
+  };
   gridLogos: Array<{
     _id: string;
     previewImage: Image;

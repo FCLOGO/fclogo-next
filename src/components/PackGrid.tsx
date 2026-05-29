@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useTransition, useCallback } from 'react';
 import type { LatestPackQueryResult } from '@/types';
 import { getPacksAction } from '@/app/actions/getPacksAction';
+import { PACKS_PAGE_SIZE, type PackListFilter } from '@/app/actions/getPacksAction.constants';
 import PackCard from './PackCard';
 import { useTranslations } from 'next-intl';
 import { Loader } from 'lucide-react';
@@ -13,13 +14,14 @@ const PAGINATION_THRESHOLD = 2; // 自动加载 2 次
 interface PackGridProps {
   initialPacks: LatestPackQueryResult[];
   locale: string;
+  filter?: PackListFilter;
 }
 
-export default function PackGrid({ initialPacks, locale }: PackGridProps) {
-  const t = useTranslations('LogosPage');
+export default function PackGrid({ initialPacks, locale, filter = {} }: PackGridProps) {
+  const t = useTranslations('PacksPage');
   const [packs, setPacks] = useState(initialPacks);
   const [page, setPage] = useState(1); // 我们已经加载了第0页，所以下一页是1
-  const [hasMore, setHasMore] = useState(initialPacks.length === 20);
+  const [hasMore, setHasMore] = useState(initialPacks.length === PACKS_PAGE_SIZE);
   const [isPending, startTransition] = useTransition();
 
   const loadMoreRef = useRef<HTMLDivElement>(null);
@@ -28,17 +30,17 @@ export default function PackGrid({ initialPacks, locale }: PackGridProps) {
     // 使用 isPending 代替 isLoading
     if (isPending || !hasMore) return;
 
-    const newPacks = await getPacksAction(page);
+    const newPacks = await getPacksAction(page, filter);
     
     if (newPacks.length > 0) {
       setPage(prev => prev + 1);
       setPacks(prev => [...prev, ...newPacks]);
     }
     
-    if (newPacks.length < 20) {
+    if (newPacks.length < PACKS_PAGE_SIZE) {
       setHasMore(false);
     }
-  }, [page, hasMore, isPending]);
+  }, [page, hasMore, isPending, filter]);
 
   // 使用 Intersection Observer 监听滚动
   useEffect(() => {

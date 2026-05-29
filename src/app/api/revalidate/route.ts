@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
         }
         break;
       case 'logoPack':
-        tagsToRevalidate.push('packs-list');
+        tagsToRevalidate.push('packs-list', 'packs-categories');
         if (body.slug?.current) {
           tagsToRevalidate.push(`pack:${body.slug.current}`);
         }

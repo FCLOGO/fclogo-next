@@ -1,26 +1,36 @@
+import type { Metadata } from 'next';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getPacksAction } from '@/app/actions/getPacksAction';
+import { type PackListFilter } from '@/app/actions/getPacksAction.constants';
+import { getPackSidebarData, normalizePackSeasonKey } from '@/lib/packCategory.queries';
 import PackGrid from '@/components/PackGrid';
-import type { Metadata } from 'next';
-import { siteConfig } from '@/config/site'; 
+import PackCategorySidebar from '@/components/PackCategorySidebar';
+import { siteConfig } from '@/config/site';
 
-export const runtime = "edge";
-export const revalidate = 604800; //页面每周生成一次
+export const runtime = 'edge';
+export const revalidate = 604800;
+
+type PageProps = {
+  searchParams: Promise<{
+    nation?: string;
+    season?: string;
+  }>;
+};
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations();
+  const t = await getTranslations('PacksPage');
 
   return {
-    title: `${t('LogosPage.packTitle')} | ${t('HomePage.pageTitle')}`,
-    description: t('HomePage.pageDescription'),
+    title: `${t('pageTitle')} | FCLOGO`,
+    description: t('pageDescription'),
     openGraph: {
-      title: `${t('LogosPage.packTitle')} | ${t('HomePage.pageTitle')}`,
-      description: t('HomePage.pageDescription'),
+      title: `${t('pageTitle')} | FCLOGO`,
+      description: t('pageDescription'),
       images: [
         {
           url: `${siteConfig.baseUrl}/logo-share.png`,
-          width: 1200, // 推荐的 OG 图片宽度
-          height: 630, // 推荐的 OG 图片高度
+          width: 1200,
+          height: 630,
           alt: 'FCLOGO Website Share Image',
         },
       ],
@@ -36,20 +46,45 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function AllLogosPage() {
-  const t = await getTranslations('LogosPage');
+export default async function AllPacksPage({ searchParams }: PageProps) {
+  const t = await getTranslations('PacksPage');
   const locale = await getLocale();
+  const { nation, season } = await searchParams;
+  const selectedNationCode = nation?.trim() || undefined;
+  const selectedSeason = normalizePackSeasonKey(season);
+  const filter: PackListFilter = {
+    nationCode: selectedNationCode,
+    season: selectedSeason,
+  };
 
-  // 只获取第一页 (page 0) 的数据作为初始数据
-  const initialPacks = await getPacksAction(0);
+  const [initialPacks, sidebarData] = await Promise.all([
+    getPacksAction(0, filter),
+    getPackSidebarData(filter),
+  ]);
 
   return (
-    <main className="container mx-auto px-6 py-10 flex-grow flex flex-col">
-      {initialPacks.length > 0 ? (
-        <PackGrid initialPacks={initialPacks} locale={locale} />
-      ) : (
-        <p className="text-center text-base-content/60">{t('noData')}</p>
-      )}
+    <main className="container mx-auto w-full flex-grow px-6 py-10">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[23rem_minmax(0,1fr)]">
+        <PackCategorySidebar
+          locale={locale}
+          selectedNationCode={selectedNationCode}
+          selectedSeason={selectedSeason}
+          sidebarData={sidebarData}
+        />
+
+        <section className="relative z-0 min-w-0">
+          {initialPacks.length > 0 ? (
+            <PackGrid
+              key={`${selectedNationCode ?? 'all'}-${selectedSeason ?? 'all'}`}
+              initialPacks={initialPacks}
+              locale={locale}
+              filter={filter}
+            />
+          ) : (
+            <p className="text-center text-base-content/60">{t('noData')}</p>
+          )}
+        </section>
+      </div>
     </main>
   );
 }

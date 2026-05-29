@@ -2,19 +2,43 @@
 
 import { sanityFetch } from '@/lib/sanity.client';
 import type { LatestPackQueryResult } from '@/types';
+import { PACKS_PAGE_SIZE, type PackListFilter } from './getPacksAction.constants';
+import { buildPackSeasonMatchPatterns } from '@/lib/packCategory.queries';
 
-const PAGE_SIZE = 20; // 每次加载的数量
+export async function getPacksAction(page: number, filter: PackListFilter = {}): Promise<LatestPackQueryResult[]> {
+  const start = page * PACKS_PAGE_SIZE;
+  const end = start + PACKS_PAGE_SIZE;
+  const conditions = ['_type == "logoPack"'];
+  const params: Record<string, string> = {};
 
-export async function getPacksAction(page: number): Promise<LatestPackQueryResult[]> {
-  const start = page * PAGE_SIZE;
-  const end = start + PAGE_SIZE;
+  if (filter.nationCode) {
+    conditions.push('sourceSubject->nation->code == $nationCode');
+    params.nationCode = filter.nationCode;
+  }
 
-  const query = `*[_type == "logoPack"] | order(coalesce(dateOriginal, _createdAt) desc) [${start}...${end}] {
+  if (filter.season) {
+    const seasonPatterns = buildPackSeasonMatchPatterns(filter.season);
+
+    if (seasonPatterns) {
+      conditions.push('(season match $seasonLongPattern || season match $seasonShortPattern)');
+      params.seasonLongPattern = seasonPatterns.longPattern;
+      params.seasonShortPattern = seasonPatterns.shortPattern;
+    }
+  }
+
+  const query = `*[${conditions.join(' && ')}] | order(coalesce(dateOriginal, _createdAt) desc) [${start}...${end}] {
     title,
     season,
     slug,
     sourceLogo->{
       previewImage
+    },
+    sourceSubject->{
+      nation->{
+        code,
+        name,
+        flagRectangle
+      }
     },
     "gridLogos": items[0...9]->{
       _id,
@@ -25,12 +49,12 @@ export async function getPacksAction(page: number): Promise<LatestPackQueryResul
   try {
     const packs = await sanityFetch<LatestPackQueryResult[]>({
       query,
-      // revalidate: 604800, // 同样缓存 1 小时
+      params,
       tags: ['packs-list'],
     });
     return packs; 
   } catch (error) {
-    console.error("Failed to fetch paginated packs:", error); // 注意：错误信息应为 packs
+    console.error("Failed to fetch paginated packs:", error);
     return [];
   }
 }

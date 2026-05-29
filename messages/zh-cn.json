@@ -93,6 +93,19 @@
     "allLoaded": "已全部加载完毕！",
     "noData": "暂无徽标数据。"
   },
+  "PacksPage": {
+    "pageTitle": "徽标集",
+    "pageDescription": "按赛季和国家/地区浏览徽标集。",
+    "title": "徽标集分类",
+    "description": "按赛季和所属国家/地区浏览所有徽标集。",
+    "allPacks": "所有徽标集",
+    "seasons": "赛季",
+    "nations": "国家/地区",
+    "loading": "加载中...",
+    "loadMore": "加载更多",
+    "allLoaded": "已全部加载完毕！",
+    "noData": "暂无数据。"
+  },
   "CategorySidebar": {
     "title": "类别导航",
     "subtitle": "浏览分类",

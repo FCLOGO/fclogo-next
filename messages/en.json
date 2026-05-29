@@ -93,6 +93,19 @@
     "allLoaded": "You've reached the end!",
     "noData": "No logos found."
   },
+  "PacksPage": {
+    "pageTitle": "Logo Packs",
+    "pageDescription": "Browse logo packs by season and nation/region.",
+    "title": "Pack Categories",
+    "description": "Browse all logo packs by season and their nation/region.",
+    "allPacks": "All Packs",
+    "seasons": "Seasons",
+    "nations": "Nations / Regions",
+    "loading": "Loading...",
+    "loadMore": "Load More",
+    "allLoaded": "You've reached the end!",
+    "noData": "No data available."
+  },
   "CategorySidebar": {
     "title": "Category Navigation",
     "subtitle": "Browse Categories",

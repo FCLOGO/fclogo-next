@@ -155,8 +155,8 @@ export default async function LogoCategorySidebar({
             />
           </div>
 
-          <div className="mt-4 min-h-0 flex-1 overflow-y-auto">
-            <div className="space-y-0">
+          <div className="hidden lg:block mt-4 min-h-0 flex-1 overflow-y-auto">
+            <div className="space-y-0.5">
               {nations.map((nation) => {
                 const nationName = localize(nation.name, locale);
                 const active = selectedNationCode === nation.code;

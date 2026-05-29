@@ -1,11 +1,27 @@
-import { getPackBySlug } from '@/lib/sanity.queries';
+import { getPackBySlug, getRelatedPacksBySubjectRef } from '@/lib/sanity.queries';
 import { notFound } from 'next/navigation';
 import { localize } from '@/lib/utils';
 import { getTranslations } from 'next-intl/server';
 import type { Metadata, ResolvingMetadata } from 'next';
 import PackGallery from '@/components/PackGallery';
 import PackSidebar from '@/components/PackSidebar';
+import PackTimeline from '@/components/PackTimeline';
 import { siteConfig } from '@/config/site'; 
+
+function normalizeSeasonYear(value: string) {
+  const raw = value.trim();
+  const fourDigitMatch = raw.match(/^(\d{4})/);
+  if (fourDigitMatch) {
+    return fourDigitMatch[1];
+  }
+
+  const twoDigitMatch = raw.match(/^(\d{2})/);
+  if (twoDigitMatch) {
+    return `20${twoDigitMatch[1]}`;
+  }
+
+  return raw;
+}
 
 export const runtime = "edge";
 export const revalidate = 2592000; // 缓存时间 30 天
@@ -58,12 +74,28 @@ export default async function PackDetailPage({ params }: Props) {
     notFound(); // 如果找不到徽标，显示 404 页面
   }
 
+  const relatedPacks = await getRelatedPacksBySubjectRef(pack.sourceSubjectRef, pack._id);
+  const sortedRelatedPacks = [...relatedPacks].sort((a, b) => {
+    const aSeason = normalizeSeasonYear(a.season);
+    const bSeason = normalizeSeasonYear(b.season);
+    const yearDiff = Number(bSeason) - Number(aSeason);
+
+    if (Number.isFinite(yearDiff) && yearDiff !== 0) {
+      return yearDiff;
+    }
+
+    return bSeason.localeCompare(aSeason);
+  });
+
   return (
     <main className="w-full h-auto mx-auto flex-grow flex flex-col">
       <div className='flex h-full flex-col lg:flex-row flex-nowrap items-center justify-between'>
         <PackGallery items={pack.items} />
         <PackSidebar pack={pack} locale={locale} />
       </div>
+      {sortedRelatedPacks.length > 0 && (
+        <PackTimeline packs={sortedRelatedPacks} locale={locale} />
+      )}
     </main>
   );
 }

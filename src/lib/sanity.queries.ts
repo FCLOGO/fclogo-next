@@ -95,10 +95,16 @@ export async function getPackBySlug(slug: string): Promise<FullPackQueryResult |
     title,
     season,
     slug,
+    "sourceSubjectRef": sourceSubject._ref,
     sourceSubject->{
       _type,
       name,
       status,
+      nation->{
+        code,
+        name,
+        flagRectangle
+      },
       info {
         shortName,
         localName,
@@ -134,6 +140,16 @@ export async function getPackBySlug(slug: string): Promise<FullPackQueryResult |
         name,
       },
     }
+    ,
+    "relatedPacks": *[_type == "logoPack" && sourceSubject._ref == ^.sourceSubjectRef && _id != ^._id] {
+      _id,
+      title,
+      season,
+      slug,
+      sourceLogo->{
+        previewImage
+      }
+    }
   }`;
   
   try {
@@ -147,6 +163,39 @@ export async function getPackBySlug(slug: string): Promise<FullPackQueryResult |
   } catch (error) {
     console.error("Failed to fetch pack by slug:", error);
     return null;
+  }
+}
+
+export async function getRelatedPacksBySubjectRef(
+  sourceSubjectRef: string,
+  currentPackId: string,
+): Promise<FullPackQueryResult['relatedPacks']> {
+  const query = `*[
+    _type == "logoPack" &&
+    sourceSubject._ref == $sourceSubjectRef &&
+    _id != $currentPackId
+  ] | order(coalesce(dateOriginal, _createdAt) desc) {
+    _id,
+    title,
+    season,
+    slug,
+    sourceLogo->{
+      previewImage
+    }
+  }`;
+
+  try {
+    return await sanityFetch<FullPackQueryResult['relatedPacks']>({
+      query,
+      params: {
+        sourceSubjectRef,
+        currentPackId,
+      },
+      tags: ['packs-list', `pack:${currentPackId}`],
+    });
+  } catch (error) {
+    console.error('Failed to fetch related packs by subject ref:', error);
+    return [];
   }
 }
 

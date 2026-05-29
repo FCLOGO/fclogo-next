@@ -132,6 +132,7 @@ export type FullPackQueryResult = {
   title: InternationalizedString;
   season: string;
   slug: { current: string };
+  sourceSubjectRef: string;
   sourceLogo: {
     previewImage: Image;
     pngUrl: string;
@@ -139,6 +140,11 @@ export type FullPackQueryResult = {
   sourceSubject: {
     _type: 'comp' | 'assn' | 'conf';
     name: InternationalizedString;
+    nation?: {
+      code: string;
+      name: InternationalizedString;
+      flagRectangle?: Image;
+    };
     info?: {
       shortName: InternationalizedString;
       localName?: string;
@@ -163,6 +169,15 @@ export type FullPackQueryResult = {
     };
   };
   items: LogoCardQueryResult[];
+  relatedPacks: Array<{
+    _id: string;
+    title: InternationalizedString;
+    season: string;
+    slug: { current: string };
+    sourceLogo: {
+      previewImage: Image;
+    };
+  }>;
 };
 
 export type FullPageQueryResult = {

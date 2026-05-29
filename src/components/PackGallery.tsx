@@ -35,13 +35,15 @@ export default async function PackGallery({ items }: PackGalleryProps) {
 
   return (
     <div
-      className="w-full flex-grow h-full p-6 items-center justify-center relative mt-10 text-base-content/60"
+      className="flex-grow h-full p-6 flex flex-col items-center justify-center relative"
       style={dotPatternStyle}
     >
-      <div className="w-full flex-grow grid items-center justify-items-center gap-6 grid-cols-[repeat(auto-fill,_minmax(160px,_1fr))] md:grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))]">
-        {items.map((logo) => (
-          <PackItem key={logo.slug.current} logo={logo} />
-        ))}
+      <div className="w-full flex-grow h-auto flex items-center justify-center">
+        <div className="w-full grid items-center justify-items-center gap-6 grid-cols-[repeat(auto-fill,_minmax(160px,_1fr))] md:grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))]">
+          {items.map((logo) => (
+            <PackItem key={logo.slug.current} logo={logo} />
+          ))}
+        </div>
       </div>
     </div>
   );

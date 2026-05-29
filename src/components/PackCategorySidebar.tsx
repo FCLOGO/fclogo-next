@@ -28,8 +28,8 @@ export default async function PackCategorySidebar({
   sidebarData,
 }: Props) {
   const t = await getTranslations('PacksPage');
-  const headerTitle = title ?? t('title');
-  const headerDescription = description ?? t('description');
+  const headerTitle = title ?? t('pageTitle');
+  const headerDescription = description ?? t('pageDescription');
   const { nations, seasons } = sidebarData;
   const totalPacksCount = seasons.reduce((sum, item) => sum + item.count, 0);
 
@@ -71,7 +71,7 @@ export default async function PackCategorySidebar({
         <div className="relative z-20 shrink-0 p-6">
           <section className="space-y-3">
             <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-base-content/50">
-              {t('seasons')}
+              {t('years')}
             </h3>
             <PackSeasonDropdown
               basePath={basePath}

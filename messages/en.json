@@ -96,11 +96,9 @@
   },
   "PacksPage": {
     "pageTitle": "Logo Packs",
-    "pageDescription": "Browse logo packs by season and nation/region.",
-    "title": "Pack Categories",
-    "description": "Browse all logo packs by season and their nation/region.",
+    "pageDescription": "Browse logo packs by year and nation/region.",
     "allPacks": "All Packs",
-    "seasons": "Seasons",
+    "years": "Years",
     "nations": "Nations / Regions",
     "loading": "Loading...",
     "loadMore": "Load More",
@@ -108,7 +106,7 @@
     "noData": "No data available."
   },
   "CategorySidebar": {
-    "title": "Category Navigation",
+    "title": "All Logos",
     "subtitle": "Browse Categories",
     "eyebrow": "Category Browsing",
     "pageDescription": "Browse all logos by nation/region and subject type.",

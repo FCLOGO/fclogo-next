@@ -30,8 +30,8 @@ export default function LogoCard({ pack, locale }: Props) {
         ))}
       </div>
       <div className="card-body flex-none gap-1 bg-base-100 h-20 w-full flex flex-row flex-nowrap justify-between items-center content-center border-t border-gray-300 border-dashed">
-        <div className="flex items-center gap-2 flex-auto">
-          <span className="badge badge-sm badge-success font-mono flex-none font-semibold px-1.5">{pack.season}</span>
+        <div className="flex flex-col items-start gap-1 flex-auto">
+          <span className="badge badge-sm badge-success font-mono flex-none font-semibold px-1">{pack.season}</span>
           <h2 className="card-title text-sm line-clamp-1">{packTitle}</h2>
         </div>
         <div className="flex-shrink-0 w-12 h-12">
